@@ -1,0 +1,92 @@
+[
+    {
+        "_id": "5d83ea5b0fb61640b1698a7e",
+        "cardName": "card_0",
+        "cardValue": 0,
+        "cardImg": "../public/ace_of_spades.png",
+        "assignedTo": "5d83ea5b0fb61640b1698a7d",
+        "gameId": "5d83ea5a0fb61640b1698a7c",
+        "__v": 0
+    },
+    {
+        "_id": "5d83ea5b0fb61640b1698a7f",
+        "cardName": "card_1",
+        "cardValue": 1,
+        "cardImg": "../public/ace_of_spades.png",
+        "assignedTo": "5d83ea5b0fb61640b1698a7d",
+        "gameId": "5d83ea5a0fb61640b1698a7c",
+        "__v": 0
+    },
+    {
+        "_id": "5d83ea5b0fb61640b1698a80",
+        "cardName": "card_2",
+        "cardValue": 2,
+        "cardImg": "../public/ace_of_spades.png",
+        "assignedTo": "5d83ea5b0fb61640b1698a7d",
+        "gameId": "5d83ea5a0fb61640b1698a7c",
+        "__v": 0
+    },
+    {
+        "_id": "5d83ea5b0fb61640b1698a81",
+        "cardName": "card_3",
+        "cardValue": 3,
+        "cardImg": "../public/ace_of_spades.png",
+        "assignedTo": "5d83ea5b0fb61640b1698a7d",
+        "gameId": "5d83ea5a0fb61640b1698a7c",
+        "__v": 0
+    },
+    {
+        "_id": "5d83ea5b0fb61640b1698a82",
+        "cardName": "card_4",
+        "cardValue": 4,
+        "cardImg": "../public/ace_of_spades.png",
+        "assignedTo": "5d83ea5b0fb61640b1698a7d",
+        "gameId": "5d83ea5a0fb61640b1698a7c",
+        "__v": 0
+    },
+    {
+        "_id": "5d83ea5b0fb61640b1698a83",
+        "cardName": "card_5",
+        "cardValue": 5,
+        "cardImg": "../public/ace_of_spades.png",
+        "assignedTo": "5d83ea5b0fb61640b1698a7d",
+        "gameId": "5d83ea5a0fb61640b1698a7c",
+        "__v": 0
+    },
+    {
+        "_id": "5d83ea5b0fb61640b1698a84",
+        "cardName": "card_6",
+        "cardValue": 6,
+        "cardImg": "../public/ace_of_spades.png",
+        "assignedTo": "5d83ea5b0fb61640b1698a7d",
+        "gameId": "5d83ea5a0fb61640b1698a7c",
+        "__v": 0
+    },
+    {
+        "_id": "5d83ea5b0fb61640b1698a85",
+        "cardName": "card_7",
+        "cardValue": 7,
+        "cardImg": "../public/ace_of_spades.png",
+        "assignedTo": "5d83ea5b0fb61640b1698a7d",
+        "gameId": "5d83ea5a0fb61640b1698a7c",
+        "__v": 0
+    },
+    {
+        "_id": "5d83ea5b0fb61640b1698a86",
+        "cardName": "card_8",
+        "cardValue": 8,
+        "cardImg": "../public/ace_of_spades.png",
+        "assignedTo": "5d83ea5b0fb61640b1698a7d",
+        "gameId": "5d83ea5a0fb61640b1698a7c",
+        "__v": 0
+    },
+    {
+        "_id": "5d83ea5b0fb61640b1698a87",
+        "cardName": "card_9",
+        "cardValue": 9,
+        "cardImg": "../public/ace_of_spades.png",
+        "assignedTo": "5d83ea5b0fb61640b1698a7d",
+        "gameId": "5d83ea5a0fb61640b1698a7c",
+        "__v": 0
+    }
+]
