@@ -135,6 +135,7 @@ function clickCell(G, ctx, id) {
     }
     //fill cell with 0 or 1 depending the current player.
     G.cells[id] = ctx.currentPlayer;
+    ctx.events.endTurn();
     console.log('post state: '+G.cells[id])
     //console.log('postCTX: '+{ctx})
 }

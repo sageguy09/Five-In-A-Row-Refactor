@@ -6,7 +6,6 @@ class gameBoard extends Component {
     onClick = id => {
         if (this.isActive(id)) {
           this.props.moves.clickCell(id);
-          this.props.events.endTurn();
         }
       };
       //write function that translates cardId to be cell[id]

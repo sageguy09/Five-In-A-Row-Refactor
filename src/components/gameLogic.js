@@ -1,8 +1,9 @@
 import { Client } from 'boardgame.io/react';
-import { Game, INVALID_MOVE } from 'boardgame.io/core';
+import { Game, INVALID_MOVE, TurnOrder } from 'boardgame.io/core';
 import {initialState, drawCard, dealCards, playCard, clickCell } from './gameFunctions'
 import firBoard from './gameBoard';
 import App from '../App';
+//import { TurnOrder } from 'boardgame.io/dist/core';
 
 
 
@@ -227,7 +228,7 @@ function IsDraw(cells) {
 
 const fir  = {
     setup: initialState, 
-    turn: { moveLimit: 1},
+    
     // moves: {
     //     drawCard,
     //     playCard,
@@ -238,14 +239,18 @@ const fir  = {
       getCards: {
         moves: {drawCard},
         endIf: G => (G.board.deck.length <= 2),
+        start: true,
         next: 'playGame',
-        start: true
       },
       playGame: {
+        order: TurnOrder.RESET,
+        // onBegin: ctx => {ctx.playOrderPos= 0},
         moves: {drawCard, playCard}
       }
     },
     turn: {
+      moveLimit: 1,
+      order: TurnOrder.RESET,
       stages: {
         play: {
           moves: {clickCell}
