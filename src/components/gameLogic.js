@@ -228,11 +228,22 @@ function IsDraw(cells) {
 const fir  = {
     setup: initialState, 
     turn: { moveLimit: 1},
-    moves: {
-        drawCard,
-        playCard,
-        clickCell,
-        //dealCards
+    // moves: {
+    //     drawCard,
+    //     playCard,
+    //     clickCell,
+    //     //dealCards
+    // },
+    phases: {
+      getCards: {
+        moves: {drawCard},
+        endIf: G => (G.board.deck.length <= 2),
+        next: 'playGame',
+        start: true
+      },
+      playGame: {
+        moves: {drawCard, playCard}
+      }
     },
     turn: {
       stages: {

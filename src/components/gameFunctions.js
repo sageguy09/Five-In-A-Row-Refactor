@@ -94,6 +94,7 @@ function drawCard(currentState, ctx) {
     let player = {...currentPlayer, hand};
     let board = {...currentBoard, deck};
     let state = {...currentState, [playerId]: player, [boardId]: board}
+    ctx.events.endTurn();
     return state;
     
 }
