@@ -234,6 +234,13 @@ const fir  = {
         clickCell,
         //dealCards
     },
+    turn: {
+      stages: {
+        play: {
+          moves: {clickCell}
+        }
+      }
+    },
     endIf: (G, ctx) => {
             if (IsVictory(G.cells)) {
                 return { winner: ctx.currentPlayer };

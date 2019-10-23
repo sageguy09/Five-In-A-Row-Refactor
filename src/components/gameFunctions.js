@@ -115,6 +115,7 @@ function playCard(currentState, ctx, cardId) {
     let player = {...currentPlayer, hand};
     let board = {...currentBoard, burn};
     let state = {...currentState, [playerId]: player, [boardId]: board};
+    ctx.events.setActivePlayers({player: 'play', moveLimit: 1})
     return state;
 }
 
