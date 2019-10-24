@@ -14,6 +14,8 @@ class gameBoard extends Component {
       drawCard = (evnt) => {
         evnt.preventDefault();
         this.props.moves.drawCard()
+        //console.log(this.props.G.board.deck.length)
+        //console.log(this.props.G.board.deck.length - (this.props.ctx.numPlayers*4))
       }
       playCard = () => {
         //evnt.preventDefault();
