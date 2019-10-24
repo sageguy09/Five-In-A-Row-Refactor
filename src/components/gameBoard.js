@@ -23,8 +23,8 @@ class gameBoard extends Component {
       }
     isAvailable = (id) => {
       let playedCard = this.props.G.board.burn[this.props.G.board.burn.length-1] 
-      if (this.props.ctx.activePlayers !== null) return true
-      return false;
+      if (this.props.ctx.activePlayers === null) return false
+      return true;
     }
     
       render() {
