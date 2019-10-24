@@ -17,9 +17,13 @@ class gameBoard extends Component {
         //console.log(this.props.G.board.deck.length)
         //console.log(this.props.G.board.deck.length - (this.props.ctx.numPlayers*4))
       }
-      playCard = () => {
+      playCard1 = () => {
         //evnt.preventDefault();
         this.props.moves.playCard(this.props.G.player_0.hand[this.props.G.player_0.hand.length-1])
+      }
+      playCard2 = () => {
+        //evnt.preventDefault();
+        this.props.moves.playCard(this.props.G.player_1.hand[this.props.G.player_1.hand.length-1])
       }
       isActive(id) {
         if (!this.props.isActive) return false;
@@ -93,7 +97,7 @@ class gameBoard extends Component {
                 {this.props.G.player_0.hand != undefined ? this.props.G.player_0.hand.map(this.playerCards) : null }
               </ul>
               <button onClick={this.drawCard}>Draw Card</button>
-              <button onClick={this.playCard}>Play Card</button>
+              <button onClick={this.playCard1}>Play Card</button>
             </div>
 
             <div class="playerView">
@@ -102,6 +106,7 @@ class gameBoard extends Component {
                 {this.props.G.player_1.hand != undefined ? this.props.G.player_1.hand.map(this.playerCards) : null }
               </ul>
               <button onClick={this.drawCard}>Draw Card</button>
+              <button onClick={this.playCard2}>Play Card</button>
             </div>
           </div>
         );

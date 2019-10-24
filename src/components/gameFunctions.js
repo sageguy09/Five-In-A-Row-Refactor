@@ -107,6 +107,9 @@ function drawCard(currentState, ctx) {
 
 function playCard(currentState, ctx, cardId) {
     let {currentPlayer, playerId} = getCurrentPlayer(currentState, ctx);
+    if (currentPlayer.hand.length <= 0){
+        return INVALID_MOVE;
+    }
     let boardId="board"
     let currentBoard = currentState[boardId]
     //find the card in hand, add hand.card to  burn
