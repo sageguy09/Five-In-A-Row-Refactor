@@ -8,8 +8,14 @@ class gameBoard extends Component {
           this.props.moves.clickCell(id);
         }
       };
+    playOnSpace = id => {
+      if (this.isActive(id)) {
+        this.props.moves.playOnSpace(id);
+      }
+    }
       //write function that translates cardId to be cell[id]
       //when playCard is ran, it calls to clickCell and places id
+
       isActive(id) {
         if (!this.props.isActive) return false;
         if (this.props.G.cells[id] !== null) return false;
@@ -26,8 +32,9 @@ class gameBoard extends Component {
             cells.push(
               <td
                 key={id}
-                className={this.isActive(id) ? 'active' : ''}
+                className={`test ${this.isActive(id) ? 'active' : ''} `} 
                 onClick={() => this.onClick(id)}
+                id={id}
               >
                 {this.props.G.board.boardArray[id]}
                 <div hidden>{this.props.G.cells[id]}</div>

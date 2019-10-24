@@ -1,6 +1,6 @@
 import { Client } from 'boardgame.io/react';
 import { Game, INVALID_MOVE, TurnOrder } from 'boardgame.io/core';
-import {initialState, drawCard, dealCards, playCard, clickCell } from './gameFunctions'
+import {initialState, drawCard, dealCards, playCard, playOnSpace, clickCell } from './gameFunctions'
 import firBoard from './gameBoard';
 import App from '../App';
 //import { TurnOrder } from 'boardgame.io/dist/core';
@@ -228,36 +228,36 @@ function IsDraw(cells) {
 
 const fir  = {
     setup: initialState, 
-    moves: { dealCards }
-    // turn: {
-    //   order: TurnOrder.RESET,
-    //   stages: {
-    //     play: {
-    //       moves: {clickCell}
-    //     }
-    //   }
-    // },
-    // phases: {
-    //   getCards: {
-    //     moves: {drawCard},
-    //     endIf: G => (G.board.deck.length <= 2),
-    //     start: true,
-    //     next: 'playGame',
-    //   },
-    //   playGame: {
-    //     // onBegin: ctx => {ctx.playOrderPos= 0},
-    //     moves: {drawCard, playCard}
-    //   }
-    // },
+    moves: { dealCards },
+    turn: {
+      order: TurnOrder.RESET,
+      stages: {
+        play: {
+          moves: {clickCell, playOnSpace}
+        }
+      }
+    },
+    phases: {
+      getCards: {
+        moves: {dealCards},
+        endIf: G => (G.board.deck.length <= 2),
+        start: true,
+        next: 'playGame',
+      },
+      playGame: {
+        // onBegin: ctx => {ctx.playOrderPos= 0},
+        moves: {drawCard, playCard}
+      }
+    },
 
-    // endIf: (G, ctx) => {
-    //         if (IsVictory(G.cells)) {
-    //             return { winner: ctx.currentPlayer };
-    //         }
-    //         if (IsDraw(G.cells)) {
-    //             return { draw: true };
-    //         }
-    // }
+    endIf: (G, ctx) => {
+            if (IsVictory(G.cells)) {
+                return { winner: ctx.currentPlayer };
+            }
+            if (IsDraw(G.cells)) {
+                return { draw: true };
+            }
+    }
 };
 
 const FiveInARow = Client({

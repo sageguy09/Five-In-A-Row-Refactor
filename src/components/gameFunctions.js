@@ -82,28 +82,6 @@ const dealCards = (currentState, ctx) => {
     return currentState
 
 }
-/*
-const dealInitialCards = (currentState, ctx) => { 
-    let {currentPlayer, playerId} = getCurrentPlayer(currentState, ctx);
-    let boardId="board"
-    let currentBoard = currentState[boardId]
-    console.log(currentBoard)
-    //let selectedPlayer = currentState[playerId]
-    // let deck = currentBoard.deck
-    
-    for(let j = 0; j < 4; j++){
-            //let playerId = ("player_"+i)
-            let slice = deck.slice(j)
-            hand.push(slice);
-        }
-        // let slice = deck.slice (0, 4)
-        // let hand = slice
-        let player = {...currentPlayer, hand};
-        let board = {...currentBoard, deck};
-        let state = {...currentState, [playerId]: player, [boardId]: board}
-        console.log(state)
-        return state
-}*/
 
 function drawCard(currentState, ctx) {
     let {currentPlayer, playerId} = getCurrentPlayer(currentState, ctx);
@@ -147,17 +125,20 @@ function playCard(currentState, ctx, cardId) {
     return state;
 }
 
-function playOnSpace(G, ctx, spaceId) {
+function playOnSpace(G, ctx) {
+    let playedCard = G.board.burn[G.board.burn.length-1]
+        console.log (playedCard+ "was played")
+    
     //let spaceIndex = ctx.board.spaces
-    if (G.spaceId[spaceId] !== null) {
-        return INVALID_MOVE;
-    }
-    //fill cell with 0 or 1 depending the current player.
-    G.spaceId[spaceId] = ctx.currentPlayer;
+    // if (G.spaceId[spaceId] !== null || G.spaceId ) {
+    //     return INVALID_MOVE;
+    // }
+    // //fill cell with 0 or 1 depending the current player.
+    // G.spaceId[spaceId] = ctx.currentPlayer;
 }
 
 function clickCell(G, ctx, id) {
-    if (G.cells[id] !== null) {
+    if (G.cells[id] !== null ) {
         return INVALID_MOVE;
     }
     //fill cell with 0 or 1 depending the current player.
@@ -197,7 +178,7 @@ const ImmutableArray = {
 
 
 //checkCards[]
-export {initialState, dealCards, drawCard, playCard, clickCell}
+export {initialState, dealCards, drawCard, playCard, playOnSpace, clickCell}
 
 
 
@@ -225,6 +206,28 @@ return  (this.state.cardObjcts)
 
 
 
+/*
+const dealInitialCards = (currentState, ctx) => { 
+    let {currentPlayer, playerId} = getCurrentPlayer(currentState, ctx);
+    let boardId="board"
+    let currentBoard = currentState[boardId]
+    console.log(currentBoard)
+    //let selectedPlayer = currentState[playerId]
+    // let deck = currentBoard.deck
+    
+    for(let j = 0; j < 4; j++){
+            //let playerId = ("player_"+i)
+            let slice = deck.slice(j)
+            hand.push(slice);
+        }
+        // let slice = deck.slice (0, 4)
+        // let hand = slice
+        let player = {...currentPlayer, hand};
+        let board = {...currentBoard, deck};
+        let state = {...currentState, [playerId]: player, [boardId]: board}
+        console.log(state)
+        return state
+}*/
 
 
 
