@@ -25,11 +25,16 @@ function initialState(ctx, state) {
             spaceObj: space
         })
     })
+    let deckArray = []
+    for (let c = 0; c<100; c++){
+        deckArray.push(c)
+    }
     //let deckArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    //let deck = ctx.random.Shuffle(deckArray)
+    let deck = ctx.random.Shuffle(deckArray)
     return state || {
         board: {
-            deck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            //deck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            deck,
             burn: [],
             boardArray :  [
                 90, 91, 92, 93, 94, 95, 96, 97, 98, 99,

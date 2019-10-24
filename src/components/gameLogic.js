@@ -240,7 +240,7 @@ const fir  = {
     phases: {
       getCards: {
         moves: {dealCards},
-        endIf: G => (G.board.deck.length <= 2),
+        endIf: G => (G.board.deck.length <= 92),
         start: true,
         next: 'playGame',
       },

@@ -8,14 +8,17 @@ class gameBoard extends Component {
           this.props.moves.clickCell(id);
         }
       };
-    cardPlayClick = id => {
-      if (this.isActive(id)) {
-        this.props.moves.playOnSpace(id);
-      }
-    }
+
       //write function that translates cardId to be cell[id]
       //when playCard is ran, it calls to clickCell and places id
-
+      drawCard = (evnt) => {
+        evnt.preventDefault();
+        this.props.moves.drawCard()
+      }
+      playCard = () => {
+        //evnt.preventDefault();
+        this.props.moves.playCard(this.props.G.player_0.hand[this.props.G.player_0.hand.length-1])
+      }
       isActive(id) {
         if (!this.props.isActive) return false;
         if (this.props.G.cells[id] !== null) return false;
@@ -28,6 +31,18 @@ class gameBoard extends Component {
       if (id < playedCard) return false
       return true;
     }
+
+    playerDivs = (player) => (
+      <div className="playerView">
+        <h3>{player.playerName}</h3>
+        <ul>
+          {this.props.G.player_1.hand != undefined ? this.props.G.player_1.hand.map(this.playerCards) : null }
+        </ul>
+      </div>
+    )
+    playerCards = (cards) => (
+      <li>{cards}</li>
+    )
     
       render() {
         
@@ -67,8 +82,25 @@ class gameBoard extends Component {
             <table id="board" align="center">
               <tbody>{tbody}</tbody>
             </table>
+            
             {winner}
             {/* <Link to="/">Home</Link> */}
+            <div class="playerView">
+              <h3>Player 1</h3>
+              <ul>
+                {this.props.G.player_0.hand != undefined ? this.props.G.player_0.hand.map(this.playerCards) : null }
+              </ul>
+              <button onClick={this.drawCard}>Draw Card</button>
+              <button onClick={this.playCard}>Play Card</button>
+            </div>
+
+            <div class="playerView">
+              <h3>Player 2</h3>
+              <ul>
+                {this.props.G.player_1.hand != undefined ? this.props.G.player_1.hand.map(this.playerCards) : null }
+              </ul>
+              <button onClick={this.drawCard}>Draw Card</button>
+            </div>
           </div>
         );
       }
