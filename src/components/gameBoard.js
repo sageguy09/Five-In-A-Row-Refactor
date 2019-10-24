@@ -24,6 +24,8 @@ class gameBoard extends Component {
     isAvailable = (id) => {
       let playedCard = this.props.G.board.burn[this.props.G.board.burn.length-1] 
       if (this.props.ctx.activePlayers === null) return false
+      
+      if (id < playedCard) return false
       return true;
     }
     
@@ -37,7 +39,7 @@ class gameBoard extends Component {
             cells.push(
               <td
                 key={id}
-                className={`${this.isAvailable(id) ? 'available': ''} ${this.isActive(id) ? 'active' : ''} `} 
+                className={`${this.isAvailable(this.props.G.board.boardArray[id]) ? 'available': ''} ${this.isActive(id) ? 'active' : ''} `} 
                 onClick={() => this.onClick(id)}
                 id={id}
               >
