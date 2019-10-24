@@ -240,6 +240,7 @@ const fir  = {
     phases: {
       getCards: {
         moves: {dealCards},
+        onBegin: dealCards,
         endIf: (G,ctx) => (G.board.deck.length <= (100 - (ctx.numPlayers*4))),
         start: true,
         next: 'playGame',
