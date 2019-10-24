@@ -55,28 +55,53 @@ function initialState(ctx, state) {
 
 
 const dealCards = (currentState, ctx) => {
+    console.log(currentState)
     //let players = ["player_0", "player_1"]
     let players = getPlayers(ctx)
-    let state
-    players.forEach(playerid => {
-        for(let j = 0; j < 4; j++){
+    let loopstate 
+    //players.forEach(playerid => {
+    for(let i=0; i< ctx.numPlayers; i++){ 
+    for(let j = 0; j < 4; j++){
+            let playerId = ("player_"+i)
             let boardId="board"
             let currentBoard = currentState[boardId]
-            let playerId = playerid
-            let selectedPlayer = currentState[playerid]
+            
+            let selectedPlayer = currentState[playerId]
             let deck = currentBoard.deck
             let hand = selectedPlayer.hand
             hand.push(deck.pop());
             let player = {...selectedPlayer, hand};
             let board = {...currentBoard, deck};
-            state = {...currentState, [playerId]: player, [boardId]: board}
+            loopstate = {...currentState, [playerId]: player, [boardId]: board}
         }
-    })
-    return state
+        
+    }
+    //console.log(loopstate)
+    return currentState
+
 }
-
-
-
+/*
+const dealInitialCards = (currentState, ctx) => { 
+    let {currentPlayer, playerId} = getCurrentPlayer(currentState, ctx);
+    let boardId="board"
+    let currentBoard = currentState[boardId]
+    console.log(currentBoard)
+    //let selectedPlayer = currentState[playerId]
+    // let deck = currentBoard.deck
+    
+    for(let j = 0; j < 4; j++){
+            //let playerId = ("player_"+i)
+            let slice = deck.slice(j)
+            hand.push(slice);
+        }
+        // let slice = deck.slice (0, 4)
+        // let hand = slice
+        let player = {...currentPlayer, hand};
+        let board = {...currentBoard, deck};
+        let state = {...currentState, [playerId]: player, [boardId]: board}
+        console.log(state)
+        return state
+}*/
 
 function drawCard(currentState, ctx) {
     let {currentPlayer, playerId} = getCurrentPlayer(currentState, ctx);

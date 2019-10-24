@@ -228,51 +228,36 @@ function IsDraw(cells) {
 
 const fir  = {
     setup: initialState, 
-    
-    // moves: {
-    //     drawCard,
-    //     playCard,
-    //     clickCell,
-    //     //dealCards
-    // },
-    phases: {
-      getCards: {
-        moves: {drawCard},
-        endIf: G => (G.board.deck.length <= 2),
-        start: true,
-        next: 'playGame',
-      },
-      playGame: {
-        order: TurnOrder.RESET,
-        // onBegin: ctx => {ctx.playOrderPos= 0},
-        moves: {drawCard, playCard}
-      }
-    },
-    turn: {
-      moveLimit: 1,
-      order: TurnOrder.RESET,
-      stages: {
-        play: {
-          moves: {clickCell}
-        }
-      }
-    },
-    endIf: (G, ctx) => {
-            if (IsVictory(G.cells)) {
-                return { winner: ctx.currentPlayer };
-            }
-            if (IsDraw(G.cells)) {
-                return { draw: true };
-            }
-    }
-    // phases: {
-    //     A: {
-    //         drawCard,
-    //         playCard,
-    //         clickCell
+    moves: {dealCards}
+    // turn: {
+    //   order: TurnOrder.RESET,
+    //   stages: {
+    //     play: {
+    //       moves: {clickCell}
     //     }
-    // }
+    //   }
+    // },
+    // phases: {
+    //   getCards: {
+    //     moves: {drawCard},
+    //     endIf: G => (G.board.deck.length <= 2),
+    //     start: true,
+    //     next: 'playGame',
+    //   },
+    //   playGame: {
+    //     // onBegin: ctx => {ctx.playOrderPos= 0},
+    //     moves: {drawCard, playCard}
+    //   }
+    // },
 
+    // endIf: (G, ctx) => {
+    //         if (IsVictory(G.cells)) {
+    //             return { winner: ctx.currentPlayer };
+    //         }
+    //         if (IsDraw(G.cells)) {
+    //             return { draw: true };
+    //         }
+    // }
 };
 
 const FiveInARow = Client({
