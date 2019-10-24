@@ -17,6 +17,12 @@ class gameBoard extends Component {
         //console.log(this.props.G.board.deck.length)
         //console.log(this.props.G.board.deck.length - (this.props.ctx.numPlayers*4))
       }
+      playCardButton = (id) => {
+        this.playCardById(id)
+      } 
+      playCardById = (id) => {
+        this.props.moves.playCard(id)
+      }
       playCard1 = () => {
         //evnt.preventDefault();
         this.props.moves.playCard(this.props.G.player_0.hand[this.props.G.player_0.hand.length-1])
@@ -47,7 +53,7 @@ class gameBoard extends Component {
       </div>
     )
     playerCards = (cards) => (
-      <li>{cards}</li>
+      <button onClick={() => this.playCardById(cards)}>{cards}</button> 
     )
     
       render() {
@@ -88,7 +94,7 @@ class gameBoard extends Component {
             <table id="board" align="center">
               <tbody>{tbody}</tbody>
             </table>
-            
+            <div align="center">{this.props.G.board.burn != undefined ? this.props.G.board.burn : null}</div>
             {winner}
             {/* <Link to="/">Home</Link> */}
             <div class="playerView">
