@@ -228,7 +228,7 @@ function IsDraw(cells) {
 
 const fir  = {
     setup: initialState, 
-    moves: {dealCards}
+    moves: { dealCards }
     // turn: {
     //   order: TurnOrder.RESET,
     //   stages: {

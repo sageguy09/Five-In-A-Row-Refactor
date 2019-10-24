@@ -6,6 +6,8 @@ import { INVALID_MOVE } from 'boardgame.io/core'
 
 
 function initialState(ctx, state) {
+
+    
     let cardId = 0;
     let cards = [];
 
@@ -23,9 +25,11 @@ function initialState(ctx, state) {
             spaceObj: space
         })
     })
+    let deckArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let deck = ctx.random.Shuffle(deckArray)
     return state || {
         board: {
-            deck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            deck,
             burn: [],
             boardArray :  [
                 90, 91, 92, 93, 94, 95, 96, 97, 98, 99,
@@ -57,22 +61,20 @@ function initialState(ctx, state) {
 const dealCards = (currentState, ctx) => {
     console.log(currentState)
     //let players = ["player_0", "player_1"]
-    let players = getPlayers(ctx)
-    let loopstate 
+
     //players.forEach(playerid => {
     for(let i=0; i< ctx.numPlayers; i++){ 
     for(let j = 0; j < 4; j++){
             let playerId = ("player_"+i)
             let boardId="board"
             let currentBoard = currentState[boardId]
-            
             let selectedPlayer = currentState[playerId]
             let deck = currentBoard.deck
             let hand = selectedPlayer.hand
             hand.push(deck.pop());
             let player = {...selectedPlayer, hand};
             let board = {...currentBoard, deck};
-            loopstate = {...currentState, [playerId]: player, [boardId]: board}
+            let state = {...currentState, [playerId]: player, [boardId]: board}
         }
         
     }
