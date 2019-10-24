@@ -59,17 +59,16 @@ td {
 }
 
 td.active {
-  cursor: pointer;
   background: #eeffe9;
 }
 
-td.active:hover {
-  background: #eeffff;
-}
 
 td.available {
   cursor: pointer;
   background: green;
+}
+td.available:hover {
+  background: #eeffff;
 }
 td.played {
   background: red;
