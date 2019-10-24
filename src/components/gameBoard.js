@@ -8,7 +8,7 @@ class gameBoard extends Component {
           this.props.moves.clickCell(id);
         }
       };
-    playOnSpace = id => {
+    cardPlayClick = id => {
       if (this.isActive(id)) {
         this.props.moves.playOnSpace(id);
       }
@@ -21,6 +21,11 @@ class gameBoard extends Component {
         if (this.props.G.cells[id] !== null) return false;
         return true;
       }
+    isAvailable = (id) => {
+      let playedCard = this.props.G.board.burn[this.props.G.board.burn.length-1] 
+      if (this.props.ctx.activePlayers !== null) return true
+      return false;
+    }
     
       render() {
         
@@ -32,7 +37,7 @@ class gameBoard extends Component {
             cells.push(
               <td
                 key={id}
-                className={`test ${this.isActive(id) ? 'active' : ''} `} 
+                className={`${this.isAvailable(id) ? 'available': ''} ${this.isActive(id) ? 'active' : ''} `} 
                 onClick={() => this.onClick(id)}
                 id={id}
               >

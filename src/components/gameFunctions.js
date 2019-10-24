@@ -25,11 +25,11 @@ function initialState(ctx, state) {
             spaceObj: space
         })
     })
-    let deckArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let deck = ctx.random.Shuffle(deckArray)
+    //let deckArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    //let deck = ctx.random.Shuffle(deckArray)
     return state || {
         board: {
-            deck,
+            deck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
             burn: [],
             boardArray :  [
                 90, 91, 92, 93, 94, 95, 96, 97, 98, 99,
@@ -59,7 +59,6 @@ function initialState(ctx, state) {
 
 
 const dealCards = (currentState, ctx) => {
-    console.log(currentState)
     //let players = ["player_0", "player_1"]
 
     //players.forEach(playerid => {
@@ -75,10 +74,8 @@ const dealCards = (currentState, ctx) => {
             let player = {...selectedPlayer, hand};
             let board = {...currentBoard, deck};
             let state = {...currentState, [playerId]: player, [boardId]: board}
-        }
-        
+        }  
     }
-    //console.log(loopstate)
     return currentState
 
 }
@@ -90,7 +87,6 @@ function drawCard(currentState, ctx) {
     }
     let boardId="board"
     let currentBoard = currentState[boardId]
-    console.log(currentBoard.boardArray.length)
     //add last card from board.deck to currentPlayer hand
     let deckIndex = currentBoard.deck.length - 1; 
     let hand = ImmutableArray.append(currentPlayer.hand, currentBoard.deck[deckIndex]);
@@ -128,7 +124,11 @@ function playCard(currentState, ctx, cardId) {
 function playOnSpace(G, ctx) {
     let playedCard = G.board.burn[G.board.burn.length-1]
         console.log (playedCard+ "was played")
-    
+    if (G.cells[playedCard] != null || G.cells[playedCard] < playedCard) {
+        return INVALID_MOVE;
+    }
+    G.cells[playedCard] = ctx.currentPlayer;
+    ctx.events.endTurn();
     //let spaceIndex = ctx.board.spaces
     // if (G.spaceId[spaceId] !== null || G.spaceId ) {
     //     return INVALID_MOVE;
