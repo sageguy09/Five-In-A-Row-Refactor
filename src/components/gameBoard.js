@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 class gameBoard extends Component {
 
     onClick = id => {
-        if (this.isActive(id)) {
+        if (this.isActive(id) && this.isAvailable(this.props.G.board.boardArray[id])) {
           this.props.moves.clickCell(id);
         }
       };
@@ -39,7 +39,7 @@ class gameBoard extends Component {
             cells.push(
               <td
                 key={id}
-                className={`${this.isAvailable(this.props.G.board.boardArray[id]) ? 'available': ''} ${this.isActive(id) ? 'active' : ''} `} 
+                className={`${this.isAvailable(this.props.G.board.boardArray[id]) ? 'available': ''} ${this.isActive(id) ? 'active' : 'played'} `} 
                 onClick={() => this.onClick(id)}
                 id={id}
               >

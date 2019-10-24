@@ -71,6 +71,9 @@ td.available {
   cursor: pointer;
   background: green;
 }
+td.played {
+  background: red;
+}
 /* 
 .formAddEdit,  input, select {
   width: 100%;
