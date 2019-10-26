@@ -11,6 +11,10 @@ class gameBoard extends Component {
     evnt.preventDefault();
     this.props.moves.drawCard()
   }
+  undoPlay = () => {
+    this.props.undo()
+  }
+
   playCardById = (id) => {
     this.props.moves.playCard(id)
   }
@@ -26,26 +30,9 @@ class gameBoard extends Component {
   if (id < playedCard) return false
   return true;
   }
-  // playerSwitch = (player) => {
-  //   // if (player != this.ctx.currentPlayer) return false
-  //   // return true
-  //   if (player = "player_0"){
-  //   let player0div = document.querySelector('#player_0')
-  //   player0div.toggleAttribute("disabled", true)
-  //   }
-  // }
-  playerDivs = (player) => (
-  <div className="playerView">
-    <ul>
-      {this.props.G.players[this.props.ctx.currentPlayer] != undefined ? this.props.G.players[this.props.ctx.currentPlayer].hand.map(this.playerCards) : null }
-    </ul>
-  </div>
-  )
-  playerCards = (cards) => (
-  <button onClick={() => this.playCardById(cards)}>{cards}</button> 
-  )
   currentPlayerCards = (cards) => (
-    <button onClick={() => this.playCardById(cards)}>{cards}</button> 
+    // <button onClick={() => this.playCardById(cards)}>{cards}</button> 
+    <div class="handCard" onClick={() => this.playCardById(cards)}><p class="cardVal">{cards}</p></div>
     )
   
 
@@ -83,32 +70,23 @@ class gameBoard extends Component {
     
     return (
       <div>
-        <h1 align="center">Five in a row</h1>
+        <h1 align="center">Five in a Row</h1>
         <table id="board" align="center">
           <tbody>{tbody}</tbody>
         </table>
-        <div align="center">{this.props.G.board.burn[this.props.G.board.burn.length-1]}</div>
+        <div align="center"><h5>Last Played Card: {this.props.G.board.burn[this.props.G.board.burn.length-1]}</h5></div>
         {winner}
         {/* <Link to="/">Home</Link> */}
-        <div class="playerView">
-          <h3>Current Player: {this.props.ctx.currentPlayer}</h3>
+        <br/>
+        <div align="center">
+        <h3>Current Player: {this.props.ctx.currentPlayer}</h3>
+        <div class="playerControls">
+          <button onClick={this.drawCard}>Draw Card</button>
+          <button onClick={() => this.props.undo()}>Undo Play</button>
+        </div>
+        <div class="playerHand">
           {this.props.G.players[this.props.ctx.currentPlayer].hand != undefined ? this.props.G.players[this.props.ctx.currentPlayer].hand.map(this.currentPlayerCards) : null }
         </div>
-        <div id="player_0" class="playerView playerCont">
-          <h3>Player 1</h3>
-          <ul>
-            {this.props.G.players[0].hand != undefined ? this.props.G.players[0].hand.map(this.playerCards) : null }
-          </ul>
-          <button onClick={this.drawCard}>Draw Card</button>
-          {/* <button onClick={this.playerSwitch("player_0")}>Switch Player</button> */}
-        </div>
-        
-        <div id="player_1" class="playerView playerCont">
-          <h3>Player 2</h3>
-          <ul>
-            {this.props.G.players[1].hand != undefined ? this.props.G.players[1].hand.map(this.playerCards) : null }
-          </ul>
-          <button onClick={this.drawCard}>Draw Card</button>
         </div>
       </div>
     );

@@ -45,7 +45,30 @@
   font-size: 25px;
   color: rgb(32, 31, 31);
 }
-
+.playerView{
+  align-content: center;
+}
+.playerHand{
+  display: flex;
+  justify-content: center;
+}
+.handCard{
+  height:200px;
+  width: 160px;
+  background: white;
+  font-size: 25px;
+  margin: 3px;
+  border: solid black 2px;
+  border-radius: 5px;
+  display:flex;
+  justify-content: center;
+}
+.cardVal{
+  align-self: center;
+}
+.playerControls{
+  flex: none;
+}
 td {
   text-align: center;
   font-weight: bold;
