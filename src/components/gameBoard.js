@@ -36,7 +36,6 @@ class gameBoard extends Component {
   // }
   playerDivs = (player) => (
   <div className="playerView">
-    <h3>{player.playerName}</h3>
     <ul>
       {this.props.G.players[this.props.ctx.currentPlayer] != undefined ? this.props.G.players[this.props.ctx.currentPlayer].hand.map(this.playerCards) : null }
     </ul>
@@ -45,6 +44,11 @@ class gameBoard extends Component {
   playerCards = (cards) => (
   <button onClick={() => this.playCardById(cards)}>{cards}</button> 
   )
+  currentPlayerCards = (cards) => (
+    <button onClick={() => this.playCardById(cards)}>{cards}</button> 
+    )
+  
+
   render() {
     
     let tbody = [];
@@ -86,6 +90,10 @@ class gameBoard extends Component {
         <div align="center">{this.props.G.board.burn[this.props.G.board.burn.length-1]}</div>
         {winner}
         {/* <Link to="/">Home</Link> */}
+        <div class="playerView">
+          <h3>Current Player: {this.props.ctx.currentPlayer}</h3>
+          {this.props.G.players[this.props.ctx.currentPlayer].hand != undefined ? this.props.G.players[this.props.ctx.currentPlayer].hand.map(this.currentPlayerCards) : null }
+        </div>
         <div id="player_0" class="playerView playerCont">
           <h3>Player 1</h3>
           <ul>
