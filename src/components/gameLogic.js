@@ -231,7 +231,7 @@ const fir  = {
       order: TurnOrder.RESET,
       stages: {
         play: {
-          move: {playOnSpace}
+          moves: {playOnSpace}
         }
       }
     },
@@ -246,7 +246,7 @@ const fir  = {
       playGame: {
         // onBegin: ctx => {ctx.playOrderPos= 0},
         moves: {drawCard, 
-          playCard: {
+          playaCard: {
             move: playCard,
             undoable: true
           }}

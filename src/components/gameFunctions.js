@@ -59,9 +59,13 @@ const dealCards = (currentState, ctx) => {
 }
 
 const drawCard = (currentState, ctx) => {
+
     let playerId = ctx.currentPlayer
     let currentPlayers = currentState.players
     let currentPlayer = currentState.players[playerId]
+    if (currentPlayer.hand.length >= 4){
+        return INVALID_MOVE;
+    }
     let boardId = "board"
     let currentBoard = currentState[boardId]
     let deckIndex = currentBoard.deck.length - 1; 
@@ -77,9 +81,13 @@ const drawCard = (currentState, ctx) => {
 }
 
 const playCard = (currentState, ctx, cardId) => {
+
     let playerId = ctx.currentPlayer
     let currentPlayers = currentState.players
     let currentPlayer = currentState.players[playerId]
+    if (currentPlayer.hand.length <= 0){
+        return INVALID_MOVE;
+    }
     let boardId="board"
     let currentBoard = currentState[boardId]
     //find the card in hand, add hand.card to  burn

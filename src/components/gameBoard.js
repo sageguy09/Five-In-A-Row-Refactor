@@ -7,17 +7,6 @@ class gameBoard extends Component {
         this.props.moves.playOnSpace(id);
       }
     };
-  drawCard = (evnt) => {
-    evnt.preventDefault();
-    this.props.moves.drawCard()
-  }
-  undoPlay = () => {
-    this.props.undo()
-  }
-
-  playCardById = (id) => {
-    this.props.moves.playCard(id)
-  }
   isActive(id) {
     if (!this.props.isActive) return false;
     if (this.props.G.cells[id] !== null) return false;
@@ -30,6 +19,26 @@ class gameBoard extends Component {
   if (id < playedCard) return false
   return true;
   }
+  setPlayedSpaceColor = (id) => {
+   if (!this.props.isActive) return false;
+   if (this.props.G.cells[id] !== null) {
+     let playedBy = this.props.G.cells[id]
+     return ('plyrClr'+playedBy)
+   }
+  }
+  playCardById = (id) => {
+    this.props.moves.playaCard(id)
+  }
+
+  drawCard = (evnt) => {
+    evnt.preventDefault();
+    this.props.moves.drawCard()
+  }
+  undoPlay = () => {
+    this.props.undo()
+  }
+
+
   currentPlayerCards = (cards) => (
     // <button onClick={() => this.playCardById(cards)}>{cards}</button> 
     <div class="handCard" onClick={() => this.playCardById(cards)}><p class="cardVal">{cards}</p></div>
@@ -46,7 +55,9 @@ class gameBoard extends Component {
         cells.push(
           <td
             key={id}
-            className={`${this.isAvailable(this.props.G.board.boardArray[id]) ? 'available': ''} ${this.isActive(id) ? 'active' : 'played'} `} 
+            className={`
+            ${this.isAvailable(this.props.G.board.boardArray[id]) ? 'available': `plyrClr${this.props.G.cells[id]}`} 
+            ${this.isActive(id) ? 'active' : 'played'} `} 
             onClick={() => this.onClick(id)}
             id={id}
           >
@@ -79,7 +90,7 @@ class gameBoard extends Component {
         {/* <Link to="/">Home</Link> */}
         <br/>
         <div align="center">
-        <h3>Current Player: {this.props.ctx.currentPlayer}</h3>
+        <h3>Current Player: <span class={`plyrClr${this.props.ctx.currentPlayer}`} >{this.props.ctx.currentPlayer}</span></h3>
         <div class="playerControls">
           <button onClick={this.drawCard}>Draw Card</button>
           <button onClick={() => this.props.undo()}>Undo Play</button>
