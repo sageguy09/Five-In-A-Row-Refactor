@@ -93,7 +93,7 @@ class gameBoard extends Component {
         <h3>Current Player: <span class={`plyrClr${this.props.ctx.currentPlayer}`} >{this.props.ctx.currentPlayer}</span></h3>
         <div class="playerControls">
           <button onClick={this.drawCard}>Draw Card</button>
-          <button onClick={() => this.props.undo()}>Undo Play</button>
+          {/* broken due to phases/move assignment <button onClick={() => this.props.undo()}>Undo Play</button> */}
         </div>
         <div class="playerHand">
           {this.props.G.players[this.props.ctx.currentPlayer].hand != undefined ? this.props.G.players[this.props.ctx.currentPlayer].hand.map(this.currentPlayerCards) : null }
