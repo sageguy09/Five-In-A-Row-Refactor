@@ -108,6 +108,18 @@ span.plyrClr0 {
 span.plyrClr1 {
   background-color: rgb(155, 68, 236)
 }
+
+.runner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.runner .run {
+  text-align: center;
+}
+
 /* 
 .formAddEdit,  input, select {
   width: 100%;
