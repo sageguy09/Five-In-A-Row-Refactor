@@ -1,6 +1,7 @@
 import {initialState, drawCard, dealCards, playCard} from './gameFunctions'
 import cardObjs from './cardObjects.json'
 import { isMainThread } from 'worker_threads';
+import { PluginPlayer } from 'boardgame.io/core'
 const mockCtx = {
     numPlayers: 2,
     turn: 0,
@@ -35,12 +36,18 @@ let mockState = {
             81, 80, 79, 78, 77, 76, 75, 74, 73, 72
           ]
     },
-    player_0: {
-        hand: []
-    },
-    player_1: {
-        hand: []
-    },
+    players: {
+        '0': {
+            hand: []
+        },
+        '1': {
+            hand: []
+        },
+        cells: Array(100).fill(null),
+        spaces,
+        cards,
+        
+    }
     // cells: Array(100).fill(null),
     // cards: mockCards
 }
