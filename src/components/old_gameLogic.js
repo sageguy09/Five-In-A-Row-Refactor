@@ -1,8 +1,11 @@
 import { Client } from 'boardgame.io/react';
 import { Game, INVALID_MOVE, TurnOrder } from 'boardgame.io/core';
 import {initialState, drawCard, dealCards, playCard, playOnSpace } from './gameFunctions'
+//import {initialState, drawCard} from './gameFuncTest'
 //import firBoard from './gameBoard';
 import App from '../App';
+//import { TurnOrder } from 'boardgame.io/dist/core';
+
 
 
 function IsVictory(cells) {
@@ -270,3 +273,30 @@ const FiveInARow = Client({
 
 
 export default FiveInARow;
+
+        // phases: {
+        //     deal: {
+        //         allowedMoves: {dealCards},
+        //         endPhaseIf: G => (G.deck.length = (G.deck.length = 2)),
+        //         next: 'play',
+        //         start: true,
+        //     },
+        //     play: {
+        //         allowedMoves: {
+        //             drawCard,
+        //             playCard,
+        //             clickCell
+        //         }
+        //     }
+            
+        // }
+        //endTurn:false,
+        // phases: {
+        //     //allowedMoves: ['drawCard', 'playCard'],
+        //     draw: {
+        //         allowedMoves: ['drawCard'],
+        //     },
+        //     play: {
+        //         allowedMoves: ['playCard'],
+        //         next: 'end'
+        //     },
