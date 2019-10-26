@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "boardgame.io": "^0.33.2",
+    "esm": "^3.2.25",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",

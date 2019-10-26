@@ -2,7 +2,7 @@ import { Client } from 'boardgame.io/react';
 import { INVALID_MOVE, TurnOrder } from 'boardgame.io/core';
 import {initialState, drawCard, dealCards, playCard, playOnSpace } from './gameFunctions'
 //import firBoard from './gameBoard';
-import App from '../App';
+
 
 
 function IsVictory(cells) {
