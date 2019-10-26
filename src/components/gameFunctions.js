@@ -11,10 +11,14 @@ function initialState(ctx, state) {
     }
     let deck = ctx.random.Shuffle(deckArray)
     return state || {
+        players: {
+            0 : {hand: []},
+            1 : {hand: []}
+          },
         board: {
             //deck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            deck,
             burn: [],
+            deck,
             boardArray :  [
                 90, 91, 92, 93, 94, 95, 96, 97, 98, 99,
                 89, 42, 43, 44, 45, 46, 47, 48, 49, 64,
@@ -28,10 +32,7 @@ function initialState(ctx, state) {
                 81, 80, 79, 78, 77, 76, 75, 74, 73, 72
               ]
         },
-        players: {
-            0 : {hand: []},
-            1 : {hand: []}
-          },
+        
         cells: Array(100).fill(null),
     }
 }

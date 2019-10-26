@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 class gameBoard extends Component {
   onClick = id => {
       if (this.isActive(id) && this.isAvailable(this.props.G.board.boardArray[id])) {
-        this.props.moves.clickCell(id);
+        this.props.moves.playOnSpace(id);
       }
     };
   drawCard = (evnt) => {
@@ -38,7 +38,7 @@ class gameBoard extends Component {
   <div className="playerView">
     <h3>{player.playerName}</h3>
     <ul>
-      {this.props.G.player_1.hand != undefined ? this.props.G.player_1.hand.map(this.playerCards) : null }
+      {this.props.G.players[this.props.ctx.currentPlayer] != undefined ? this.props.G.players[this.props.ctx.currentPlayer].hand.map(this.playerCards) : null }
     </ul>
   </div>
   )
@@ -89,7 +89,7 @@ class gameBoard extends Component {
         <div id="player_0" class="playerView playerCont">
           <h3>Player 1</h3>
           <ul>
-            {this.props.G.player_0.hand != undefined ? this.props.G.player_0.hand.map(this.playerCards) : null }
+            {this.props.G.players[0].hand != undefined ? this.props.G.players[0].hand.map(this.playerCards) : null }
           </ul>
           <button onClick={this.drawCard}>Draw Card</button>
           {/* <button onClick={this.playerSwitch("player_0")}>Switch Player</button> */}
@@ -98,7 +98,7 @@ class gameBoard extends Component {
         <div id="player_1" class="playerView playerCont">
           <h3>Player 2</h3>
           <ul>
-            {this.props.G.player_1.hand != undefined ? this.props.G.player_1.hand.map(this.playerCards) : null }
+            {this.props.G.players[1].hand != undefined ? this.props.G.players[1].hand.map(this.playerCards) : null }
           </ul>
           <button onClick={this.drawCard}>Draw Card</button>
         </div>

@@ -1,7 +1,7 @@
 import { Client } from 'boardgame.io/react';
-import { Game, INVALID_MOVE, TurnOrder } from 'boardgame.io/core';
+import { INVALID_MOVE, TurnOrder } from 'boardgame.io/core';
 import {initialState, drawCard, dealCards, playCard, playOnSpace } from './gameFunctions'
-//import firBoard from './gameBoard';
+import firBoard from './gameBoard';
 import App from '../App';
 
 
@@ -261,7 +261,7 @@ const fir  = {
 
 const FiveInARow = Client({
     game: fir,
-    //board: firBoard,
+    board: firBoard,
    //multiplayer: {local: true},
     // multiplayer: { server: 'localhost:3000'},
     //numOfPlayers: 2, 
