@@ -4,12 +4,13 @@ import  FirGame  from './firGame';
 import FirBoard  from './firBoard';
 const hostname = window.location.hostname;
 //const gameUrl = `https://${process.env.REACT_APP_GAME_SERVER_URL}`
-// const GAMEPORT = process.env.PORT || 8000
+const GAMEPORT = process.env.PORT || 8000
 const FirClient = Client({
     game: FirGame,
     board: FirBoard,
     debug: false,
-    multiplayer: {server: `hidden-temple-14129.herokuapp.com:${443}`}
+    multiplayer: {server: `${hostname}:${GAMEPORT}`}
+    //multiplayer: {server: `hidden-temple-14129.herokuapp.com:${443}`}
 })
 
 
