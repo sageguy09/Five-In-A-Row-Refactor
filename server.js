@@ -5,8 +5,8 @@ import { Server } from 'boardgame.io/server';
 import FirGame from './src/components/firGame'
 
 
-const { REACT_APP_SERVER_PORT } = process.env;
-const PORT = REACT_APP_SERVER_PORT || process.env.PORT || 8000;
+
+const PORT = process.env.PORT || 8000;
 const server = Server({games: [FirGame]});
 
 const { app } = server;
