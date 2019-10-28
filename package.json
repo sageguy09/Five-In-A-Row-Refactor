@@ -5,6 +5,8 @@
   "dependencies": {
     "boardgame.io": "^0.33.2",
     "esm": "^3.2.25",
+    "koa-static": "^5.0.0",
+    "koa2-connect-history-api-fallback": "^0.1.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
