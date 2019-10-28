@@ -9,7 +9,7 @@ const FirClient = Client({
     game: FirGame,
     board: FirBoard,
     debug: false,
-    multiplayer: {server: GAMEPORT }
+    multiplayer: {server: `${hostname}:${GAMEPORT}`}
 })
 
 
