@@ -11,6 +11,7 @@ const server = Server({games: [FirGame]});
 
 const { app } = server;
 
+
 const root = path.join(__dirname, './build');
 
 
