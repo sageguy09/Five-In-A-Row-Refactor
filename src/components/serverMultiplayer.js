@@ -44,7 +44,7 @@ class App extends React.Component {
         <div>
             <h1>Five In A Row Server Multiplayer</h1>
             <div className="run">
-                <FirClient gameID="test" playerID={this.state.playerID} />
+                <FirClient  playerID={this.state.playerID} />
                 {/* &lt;App playerID=&quot;{this.state.playerID}&quot;/&gt; */}
             </div>
         </div>

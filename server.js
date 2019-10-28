@@ -11,11 +11,9 @@ const server = Server({games: [FirGame]});
 
 const { app } = server;
 
-const root = path.join(__dirname, '../');
+const root = path.join(__dirname, './build');
 
-app.use(
-    historyApiFallback({ index: 'index.html', whiteList: ['/api', '/games']})
-)
+
 
 app.use(serve(root))
 
