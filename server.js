@@ -18,6 +18,19 @@ const root = path.join(__dirname, './build');
 
 app.use(serve(root))
 
-server.run(PORT, () => {
-    console.log(`Serving at: http://localhost:${PORT}/`)
-})
+// server.run(PORT, () => {
+//     console.log(`Serving at: http://localhost:${PORT}/`)
+// })
+server.run({ 
+    port: PORT, 
+    // callback: () => {
+    //     console.log(`Serving at: http://localhost:${PORT}/`, server)
+    // },
+    lobbyConfig: {
+    port: PORT,
+    apiCallback: () => {
+        console.log(`lobby serving at: http://localhost:${PORT}/`)
+    }
+}
+});
+

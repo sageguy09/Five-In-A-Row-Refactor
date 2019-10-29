@@ -9,7 +9,7 @@ const GAMEPORT = process.env.PORT || 8000
 const FirClient = Client({
     game: FirGame,
     board: FirBoard,
-    debug: false,
+    debug: true,
     
     multiplayer: {
         server: (process.env.NODE_ENV === 'production') ? `${url}` : `${window.location.hostname}:${GAMEPORT}`

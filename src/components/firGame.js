@@ -225,6 +225,7 @@ function IsDraw(cells) {
 
 
 const FirGame  = {
+    name: 'Five-In-A-Row',
     setup: initialState, 
     moves: { dealCards },
     turn: {
