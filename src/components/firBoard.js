@@ -27,7 +27,7 @@ class FirBoard extends React.Component {
    }
   }
   playCardById = (id) => {
-    this.props.moves.playaCard(id)
+    this.props.moves.playCard(id)
   }
 
   drawCard = (evnt) => {

@@ -247,10 +247,7 @@ const FirGame  = {
       playGame: {
         // onBegin: ctx => {ctx.playOrderPos= 0},
         moves: {drawCard, 
-          playaCard: {
-            move: playCard,
-            undoable: true
-          }}
+          playCard}
       }
     },
 
