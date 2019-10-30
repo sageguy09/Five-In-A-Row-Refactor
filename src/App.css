@@ -97,10 +97,10 @@ td.disabled {
   background: red;
 }
 td.plyrClr0 {
-  background: orangered
+  background: lightblue
 }
 td.plyrClr1 {
-  background: rgb(155, 68, 236)
+  background: lightslategray
 }
 span.plyrClr0 {
   background-color: orangered

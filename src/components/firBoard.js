@@ -81,7 +81,7 @@ class FirBoard extends React.Component {
     let awaitPlayer = null;
     if (!this.props.isActive) {
       awaitPlayer = 
-      <div id="winner"><h3 align="center">Awaiting other player to make move...</h3></div>
+      <div id="winner"><h5 align="center">Awaiting other player to make move...</h5></div>
     }
     
     return (
