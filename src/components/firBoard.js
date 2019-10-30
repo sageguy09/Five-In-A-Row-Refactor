@@ -37,12 +37,6 @@ class FirBoard extends React.Component {
   undoPlay = () => {
     this.props.undo()
   }
-  endgame = () => {
-    this.props.events.endGame()
-  }
-  playAgain = () => {
-    this.props.reset()
-  }
 
 
   currentPlayerCards = (cards) => (
@@ -63,7 +57,7 @@ class FirBoard extends React.Component {
             key={id}
             className={`
             ${this.isAvailable(this.props.G.board.boardArray[id]) ? 'available': `plyrClr${this.props.G.cells[id]}`} 
-            ${this.isActive(id) ? 'active' : 'played'} `} 
+            ${this.isActive(id) ? 'active' : 'disabled'} `} 
             onClick={() => this.onClick(id)}
             id={id}
           >
@@ -84,6 +78,11 @@ class FirBoard extends React.Component {
             <div id="winner">Draw!</div>
           );
     }
+    let awaitPlayer = null;
+    if (!this.props.isActive) {
+      awaitPlayer = 
+      <div id="winner"><h3 align="center">Awaiting other player to make move...</h3></div>
+    }
     
     return (
       <div>
@@ -97,6 +96,7 @@ class FirBoard extends React.Component {
         <br/>
         <div align="center">
         <h3>Current Player: <span class={`plyrClr${this.props.ctx.currentPlayer}`} >{this.props.ctx.currentPlayer}</span></h3>
+        {awaitPlayer}
         <div class="playerControls">
           <button onClick={this.drawCard}>Draw Card</button>
           {/* broken due to phases/move assignment <button onClick={() => this.props.undo()}>Undo Play</button> */}
@@ -104,7 +104,6 @@ class FirBoard extends React.Component {
         <div class="playerHand">
           {this.props.G.players[this.props.playerID].hand != undefined ? this.props.G.players[this.props.playerID].hand.map(this.currentPlayerCards) : null }
         </div>
-        <button onClick={() => this.props.events.endGame()}>End Game</button>
         </div>
       </div>
     );

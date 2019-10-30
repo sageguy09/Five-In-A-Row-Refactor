@@ -93,7 +93,7 @@ td.available {
 td.available:hover {
   background: #eeffff;
 }
-td.played {
+td.disabled {
   background: red;
 }
 td.plyrClr0 {
