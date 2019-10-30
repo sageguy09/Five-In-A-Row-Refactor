@@ -17,6 +17,7 @@ let mockState = {
     board: {
         deck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         burn: [],
+        playedSpaces: [],   
     },
     players: {
         0 : {hand: []},
@@ -51,7 +52,9 @@ test('dealing initial cards', () => {
 
 test('playing card on space', () => {
     let state_6 = initialState(mockCtx, mockState)
+    console.log(state_6.players[0].hand)
     expect(state_6.cells[10]).toEqual(null)
     let state_7 = playOnSpace(mockState, mockCtx, mockState.players[0].hand[1])
+    console.log(state_7)
     expect(state_7.cells[mockState.players[0].hand[1]]).toEqual(mockCtx.currentPlayer)
 })

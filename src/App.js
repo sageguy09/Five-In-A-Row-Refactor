@@ -31,7 +31,6 @@ import ServerMultiplayer from './components/serverMultiplayer'
 import Lobby from './components/lobby'
 class App extends Component {
 
-
   render() {
     return ( 
       <div>

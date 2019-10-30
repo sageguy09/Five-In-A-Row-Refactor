@@ -1,7 +1,16 @@
 import React from 'react';
+import Rules from './rule';
 // import {Link} from 'react-router-dom'
 
 class FirBoard extends React.Component {
+  state = {
+    showrules: false
+  }
+  handleRulesClick = () => {
+    this.setState((state) => {
+      return {showrules: !state.showrules}
+    })
+  }
   onClick = id => {
       if (this.isActive(id) && this.isAvailable(this.props.G.board.boardArray[id])) {
         this.props.moves.playOnSpace(id);
@@ -104,18 +113,20 @@ class FirBoard extends React.Component {
     return (
       <div>
         <h1 align="center">Five in a Row</h1>
+        <h3>Current Player: <span class={`plyrClr${this.props.ctx.currentPlayer}`} >{this.props.ctx.currentPlayer}</span></h3>
         <table id="board" align="center">
           <tbody>{tbody}</tbody>
         </table>
-        <div align="center"><h5>Last Played Card: {this.props.G.board.burn[this.props.G.board.burn.length-1]}</h5></div>
+        <div align="center"><h5>Last Played Card: {this.props.G.board.burn[this.props.G.board.burn.length-1]} on space {this.props.G.board.playedSpaces[this.props.G.board.playedSpaces.length-1]}</h5></div>
         {winner}
         {/* <Link to="/">Home</Link> */}
         <br/>
         <div align="center">
-        <h3>Current Player: <span class={`plyrClr${this.props.ctx.currentPlayer}`} >{this.props.ctx.currentPlayer}</span></h3>
+        
         {awaitPlayer}
         
         </div>
+        {this.state.showrules ? <Rules/>: <button onCLick={this.handleRulesClick}>Show Rules</button> }
       </div>
     );
   }
