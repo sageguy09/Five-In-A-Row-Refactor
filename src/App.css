@@ -62,6 +62,7 @@
   border-radius: 5px;
   display:flex;
   justify-content: center;
+  cursor: pointer;
 }
 .cardVal{
   align-self: center;
@@ -73,7 +74,7 @@ td {
   text-align: center;
   font-weight: bold;
   font-size: 25px;
-  color: #555;
+  color: rgb(12, 12, 12);
   width: 50px;
   height: 50px;
   line-height: 50px;
@@ -94,19 +95,19 @@ td.available:hover {
   background: #eeffff;
 }
 td.disabled {
-  background: red;
+  background: rgba(255, 24, 24, 0.64)
 }
 td.plyrClr0 {
-  background: lightblue
+  background: rgba(61, 61, 245)
 }
 td.plyrClr1 {
-  background: lightslategray
+  background: rgba(119, 136, 153)
 }
 span.plyrClr0 {
-  background-color: orangered
+  background-color: rgba(61, 61, 245)
 }
 span.plyrClr1 {
-  background-color: rgb(155, 68, 236)
+  background-color: rgba(119, 136, 153)
 }
 
 .runner {
@@ -118,6 +119,70 @@ span.plyrClr1 {
 
 .runner .run {
   text-align: center;
+}
+
+#lobby-view {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.phase-title {
+  margin-top: 40px;
+}
+
+.hidden {
+  display: none;
+}
+
+.phase {
+  border: none;
+  outline: none;
+}
+
+#game-creation select {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+#game-creation span {
+  margin-right: 10px;
+}
+
+#instances td {
+  list-style: none;
+  border: 0px solid #eee;
+  border-top: none;
+  height: 30px;
+  line-height: 30px;
+  text-align: left;
+  font-size: 14px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#instances table {
+  height: 100%;
+  width: 500px;
+  white-space: nowrap;
+}
+
+#instances button {
+  font-size: 12px;
+}
+
+.error-msg {
+  font-size: 12px;
+  color: red;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.buttons button {
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 70px;
 }
 
 /* 

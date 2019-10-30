@@ -2,7 +2,7 @@ import React from 'react';
 import { Lobby } from 'boardgame.io/react';
 import { default as FirBoard } from './firBoard';
 import { default as FirGame } from './firGame';
-import './lobby.css' 
+import '../App.css'
 
 FirGame.minPlayers = FirGame.maxPlayers = 2;
 FirGame.debug = true;

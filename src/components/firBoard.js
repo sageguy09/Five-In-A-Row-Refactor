@@ -56,8 +56,10 @@ class FirBoard extends React.Component {
           <td
             key={id}
             className={`
+            
             ${this.isAvailable(this.props.G.board.boardArray[id]) ? 'available': `plyrClr${this.props.G.cells[id]}`} 
-            ${this.isActive(id) ? 'active' : 'disabled'} `} 
+            ${this.isActive(id) ? 'active' : 'disabled'}
+             `} 
             onClick={() => this.onClick(id)}
             id={id}
           >
@@ -81,8 +83,23 @@ class FirBoard extends React.Component {
     let awaitPlayer = null;
     if (!this.props.isActive) {
       awaitPlayer = 
-      <div id="winner"><h5 align="center">Awaiting other player to make move...</h5></div>
-    }
+      <div class="playerControls">
+        <div id="winner"><h5 align="center">Awaiting other player to make move...</h5></div>
+        <div class="playerHand" disabled>
+          {this.props.G.players[this.props.playerID].hand != undefined ? this.props.G.players[this.props.playerID].hand.map(this.currentPlayerCards) : null }
+        </div>
+      </div>
+      }
+    else {
+      awaitPlayer = 
+    <div class="playerControls">
+      <button onClick={this.drawCard}>Draw Card</button>
+      {/* broken due to phases/move assignment <button onClick={() => this.props.undo()}>Undo Play</button> */}
+      <div class="playerHand">
+        {this.props.G.players[this.props.playerID].hand != undefined ? this.props.G.players[this.props.playerID].hand.map(this.currentPlayerCards) : null }
+      </div>
+      </div>}
+
     
     return (
       <div>
@@ -97,13 +114,7 @@ class FirBoard extends React.Component {
         <div align="center">
         <h3>Current Player: <span class={`plyrClr${this.props.ctx.currentPlayer}`} >{this.props.ctx.currentPlayer}</span></h3>
         {awaitPlayer}
-        <div class="playerControls">
-          <button onClick={this.drawCard}>Draw Card</button>
-          {/* broken due to phases/move assignment <button onClick={() => this.props.undo()}>Undo Play</button> */}
-        </div>
-        <div class="playerHand">
-          {this.props.G.players[this.props.playerID].hand != undefined ? this.props.G.players[this.props.playerID].hand.map(this.currentPlayerCards) : null }
-        </div>
+        
         </div>
       </div>
     );
