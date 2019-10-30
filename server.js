@@ -14,23 +14,26 @@ const { app } = server;
 
 const root = path.join(__dirname, './build');
 
-
+app.use(
+    historyApiFallback({ index: 'index.html', whiteList: ['/api', '/games'] })
+  );
 
 app.use(serve(root))
 
-// server.run(PORT, () => {
-//     console.log(`Serving at: http://localhost:${PORT}/`)
-// })
-server.run({ 
-    port: PORT, 
-    // callback: () => {
-    //     console.log(`Serving at: http://localhost:${PORT}/`, server)
-    // },
-    lobbyConfig: {
-    port: PORT,
-    apiCallback: () => {
-        console.log(`lobby serving at: http://localhost:${PORT}/`)
-    }
-}
-});
+//app.use(serve(path.join(__dirname, './build/index.html')))
+server.run(PORT, () => {
+    console.log(`Serving at: http://localhost:${PORT}/`)
+})
+// server.run({ 
+//     port: PORT, 
+//     // callback: () => {
+//     //     console.log(`Serving at: http://localhost:${PORT}/`, server)
+//     // },
+//     lobbyConfig: {
+//     port: PORT,
+//     apiCallback: () => {
+//         console.log(`lobby serving at: http://localhost:${PORT}/`)
+//     }
+// }
+// });
 

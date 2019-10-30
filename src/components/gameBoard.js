@@ -96,7 +96,7 @@ class gameBoard extends Component {
           {/* broken due to phases/move assignment <button onClick={() => this.props.undo()}>Undo Play</button> */}
         </div>
         <div class="playerHand">
-          {this.props.G.players[this.props.ctx.currentPlayer].hand != undefined ? this.props.G.players[this.props.ctx.currentPlayer].hand.map(this.currentPlayerCards) : null }
+          {this.props.G.players[this.props.playerID].hand != undefined ? this.props.G.players[this.props.playerID].hand.map(this.currentPlayerCards) : null }
         </div>
         </div>
       </div>

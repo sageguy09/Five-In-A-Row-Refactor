@@ -37,6 +37,12 @@ class FirBoard extends React.Component {
   undoPlay = () => {
     this.props.undo()
   }
+  endgame = () => {
+    this.props.events.endGame()
+  }
+  playAgain = () => {
+    this.props.reset()
+  }
 
 
   currentPlayerCards = (cards) => (
@@ -98,6 +104,7 @@ class FirBoard extends React.Component {
         <div class="playerHand">
           {this.props.G.players[this.props.playerID].hand != undefined ? this.props.G.players[this.props.playerID].hand.map(this.currentPlayerCards) : null }
         </div>
+        <button onClick={() => this.props.events.endGame()}>End Game</button>
         </div>
       </div>
     );
