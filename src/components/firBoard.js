@@ -79,7 +79,7 @@ class FirBoard extends React.Component {
   }
   opponentCards = (cards) => (
   // <img class="oppponentCard" src="../public/card_back_orange.png"/>
-  <p>card: {cards}</p>
+  <img class="opponentCard" src={cardback}/>
    
       //console.log(cards)
     

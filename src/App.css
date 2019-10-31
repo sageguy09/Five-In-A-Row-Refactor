@@ -64,6 +64,10 @@
   justify-content: center;
   cursor: pointer;
 }
+.opponentCard{
+  height: 100px;
+  width: 70px;
+}
 .cardVal{
   align-self: center;
 }
