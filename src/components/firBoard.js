@@ -148,7 +148,11 @@ class FirBoard extends React.Component {
         {this.props.G.players[this.props.playerID].hand != undefined ? this.props.G.players[this.props.playerID].hand.map(this.currentPlayerCards) : null }
       </div>
       </div>}
-
+    let prevMove = null;
+    if (this.props.G.board.lastMove != null){
+      prevMove = 
+      <p>{this.props.G.board.lastMove}</p>
+    }
         
     
     return (
@@ -173,7 +177,8 @@ class FirBoard extends React.Component {
         {awaitPlayer}
         {this.props.G.players != undefined ? Object.keys(this.props.G.players).map(this.opponentsHands) : null}
         {this.state.showrules ? <Rules hideRules={this.handleRulesClick}/>: <button onClick={this.handleRulesClick}>Show Rules</button> }
-        {this.props.log != undefined ? Object.keys(this.props.log).map(this.lastMove): null}
+        {/* {this.props.board.lastMove != undefined ? Object.keys(this.props.log).map(this.lastMove): null} */}
+        {prevMove}
         </div>
         
       </div>
