@@ -14,12 +14,15 @@ const TwoPlayerMulti = () => (
     <div>
         <h1>Five In A Row Local Multiplayer</h1>
         <div className="run">
-            <App gameId="multi" playerID="0" />
-            &lt;App playerID=&quot;0&quot;/&gt;
+            <h4>Player 1</h4>
+            <App gameID="multi" playerID="0" />
+
+            
         </div>
         <div className="run">
-            <App gameId="multi" playerID="1" />
-            &lt;App playerID=&quot;1&quot;/&gt;
+            <h4>Player 2</h4>
+            <App gameID="multi" playerID="1" />
+            
         </div>
     </div>
 );

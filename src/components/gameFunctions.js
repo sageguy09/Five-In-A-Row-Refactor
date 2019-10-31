@@ -20,18 +20,7 @@ function initialState(ctx, state) {
             burn: [],
             deck,
             playedSpaces: [], 
-            boardArray :  [
-                90, 91, 92, 93, 94, 95, 96, 97, 98, 99,
-                89, 42, 43, 44, 45, 46, 47, 48, 49, 64,
-                88, 41, 20, 21, 22, 23, 24, 25, 50, 65,
-                87, 40, 19, 6,   7,  8,  9, 26, 51, 66, 
-                86, 39, 18, 5,   0,  1, 10, 27, 52, 67,
-                85, 38, 17, 4,   3,  2, 11, 28, 53, 68,
-                84, 37, 16, 15, 14, 13, 12, 29, 54, 69,
-                83, 36, 35, 34, 33, 32, 31, 30, 55, 70,
-                82, 63, 62, 61, 60, 59, 58, 57, 56, 71,
-                81, 80, 79, 78, 77, 76, 75, 74, 73, 72
-              ]
+            lastMove: ''
         },
         
         cells: Array(100).fill(null),
@@ -112,13 +101,13 @@ const playOnSpace = (currentState, ctx, id) => {
     }
     //fill cell with 0 or 1 depending the current player.
     currentState.cells[id] = ctx.currentPlayer;
-    currentState.board.playedSpaces = ImmutableArray.append(currentState.board.playedSpaces, currentState.board.boardArray[id])
-    ctx.events.endTurn();
-    
+    currentState.board.playedSpaces = ImmutableArray.append(currentState.board.playedSpaces, id)
     return currentState
-    
-
+    //ctx.events.endTurn();
+    //console.log('post state: '+G.cells[id])
+    //console.log('postCTX: '+{ctx})
 }
+
 
 const ImmutableArray = {
     append(arr, value) {

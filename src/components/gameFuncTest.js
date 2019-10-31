@@ -1,4 +1,4 @@
-
+import { INVALID_MOVE } from 'boardgame.io/core'
 
 
 
@@ -25,7 +25,8 @@ function initialState(ctx, state) {
                 83, 36, 35, 34, 33, 32, 31, 30, 55, 70,
                 82, 63, 62, 61, 60, 59, 58, 57, 56, 71,
                 81, 80, 79, 78, 77, 76, 75, 74, 73, 72
-              ]
+              ],
+              lastMove: '',
         },
         players: {
             0 : {hand: []},
@@ -46,10 +47,11 @@ const dealCards = (currentState, ctx) => {
             let currentBoard = currentState[boardId]
             let deck = currentBoard.deck
             let hand = selectedPlayer.hand
+            currentBoard.lastMove = 'Cards have been dealt. Waiting on player to make move'
             hand.push(deck.pop());
             let player = {...selectedPlayer,  hand: hand};
             let playersu = {...currentPlayers,  [playerId]: player}
-            let board = {...currentBoard, deck};
+            let board = {...currentBoard, deck: deck};
             let state = {...currentState, players: playersu, [boardId]: board}
         }  
     }
@@ -65,10 +67,11 @@ const drawCard = (currentState, ctx) => {
     let deckIndex = currentBoard.deck.length - 1; 
     let hand = ImmutableArray.append(currentPlayer.hand, currentBoard.deck[deckIndex]);
     let deck = ImmutableArray.removeAt(currentBoard.deck, deckIndex);
+    let move = 'drew a card'
     let player = {...currentPlayer, hand: hand}
     let playersu = {...currentPlayers, [playerId]: player }
     //console.log(players)
-    let board = {...currentBoard, deck};
+    let board = {...currentBoard, deck: deck, lastMove: move};
     let state = {...currentState,  players: playersu, [boardId]: board}
     return(state)
 }
@@ -84,10 +87,12 @@ const playCard = (currentState, ctx, cardId) => {
     let burn = ImmutableArray.append(currentBoard.burn, currentPlayer.hand[handIndex])
     //remove card from player hand. 
     let hand = ImmutableArray.removeAt(currentPlayer.hand, handIndex)
+
+    let move = 'playing a card'
     //construct and return a new state object with changes.
     let player = {...currentPlayer, hand: hand}
     let playersu = {...currentPlayers, [playerId]: player }
-    let board = {...currentBoard, burn};
+    let board = {...currentBoard, burn: burn, lastMove: move};
     let state = {...currentState,  players: playersu, [boardId]: board}
     //set game to play stage for player to play on a space
     //ctx.events.setActivePlayers({player: 'play', moveLimit: 1})
@@ -95,10 +100,11 @@ const playCard = (currentState, ctx, cardId) => {
 }
 
 const playOnSpace = (currentState, ctx, id) => {
-    if (currentState.cells[id] !== null ) {
-        return INVALID_MOVE;
-    }
+    // if (currentState.cells[id] !== null ) {
+    //     return INVALID_MOVE;
+    // }
     //fill cell with 0 or 1 depending the current player.
+    currentState.board.lastMove = 'played on space'
     currentState.cells[id] = ctx.currentPlayer;
     currentState.board.playedSpaces = ImmutableArray.append(currentState.board.playedSpaces, id)
     return currentState

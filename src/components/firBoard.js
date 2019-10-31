@@ -1,5 +1,6 @@
 import React from 'react';
 import Rules from './rules';
+
 // import {Link} from 'react-router-dom'
 import cardback from './cardback.png'
 
@@ -71,7 +72,7 @@ class FirBoard extends React.Component {
     let playercards = this.props.G.players[player].hand.map(this.opponentCards);
     if (this.props.playerID != player){
     return <div>
-      <p>{player} : {this.props.G.players[player].hand.length}</p>
+      <p>Player {player}'s Remaining Cards</p>
       {playercards}
       {/* <img class="oppponentCard" src={cardback}/> */}
       </div>
@@ -84,6 +85,14 @@ class FirBoard extends React.Component {
       //console.log(cards)
     
   )
+
+  lastMove = () => {
+
+    let loggedMove = this.props.log[this.props.log.length-1].action
+    if(loggedMove.type == "MAKE_MOVE"){
+    console.log(loggedMove.payload.type)}
+    // <p>{this.props.log[this.props.log.length-1]}</p>
+  }  
 
   render() {
     
@@ -140,27 +149,33 @@ class FirBoard extends React.Component {
       </div>
       </div>}
 
+        
     
     return (
       <div>
         <h1 align="center">Five in a Row</h1>
-        <h3>Current Player: <span class={`plyrClr${this.props.ctx.currentPlayer}`} >{this.props.ctx.currentPlayer}</span></h3>
+        
         {/* {this.props.G.players != undefined ? this.getOpponentCardCount(this.props.G.players): null} */}
-        {this.props.G.players != undefined ? Object.keys(this.props.G.players).map(this.opponentsHands) : null}
+        
         {/* {this.props.G.players != undefined ? this.props.players.forEach(this.opponentsHands): null} */}
         <table id="board" align="center">
           <tbody>{tbody}</tbody>
         </table>
-        <div align="center"><h5>Last Played Card: {this.props.G.board.burn[this.props.G.board.burn.length-1]} on space {this.props.G.board.playedSpaces[this.props.G.board.playedSpaces.length-1]}</h5></div>
+        <div align="center">
+          <h5>Current Player: <span class={`plyrClr${this.props.ctx.currentPlayer}`} >{this.props.ctx.currentPlayer}</span></h5>
+          <h5>Last Played Card: {this.props.G.board.burn[this.props.G.board.burn.length-1]} on space {this.props.G.board.playedSpaces[this.props.G.board.playedSpaces.length-1]}</h5>
+        </div>
         {winner}
         {/* <Link to="/">Home</Link> */}
         <br/>
         <div align="center">
         
         {awaitPlayer}
-        
-        </div>
+        {this.props.G.players != undefined ? Object.keys(this.props.G.players).map(this.opponentsHands) : null}
         {this.state.showrules ? <Rules hideRules={this.handleRulesClick}/>: <button onClick={this.handleRulesClick}>Show Rules</button> }
+        {this.props.log != undefined ? Object.keys(this.props.log).map(this.lastMove): null}
+        </div>
+        
       </div>
     );
   }
