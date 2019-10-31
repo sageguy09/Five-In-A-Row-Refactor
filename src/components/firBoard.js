@@ -1,15 +1,18 @@
 import React from 'react';
-import Rules from './rule';
+import Rules from './rules';
 // import {Link} from 'react-router-dom'
 
 class FirBoard extends React.Component {
   state = {
     showrules: false
   }
-  handleRulesClick = () => {
+  handleRulesClick = (evnt) => {
+    evnt.preventDefault();
+    //console.log(this.state)//return {showrules: !state.showrules}
     this.setState((state) => {
       return {showrules: !state.showrules}
     })
+
   }
   onClick = id => {
       if (this.isActive(id) && this.isAvailable(this.props.G.board.boardArray[id])) {
@@ -126,7 +129,7 @@ class FirBoard extends React.Component {
         {awaitPlayer}
         
         </div>
-        {this.state.showrules ? <Rules/>: <button onCLick={this.handleRulesClick}>Show Rules</button> }
+        {this.state.showrules ? <Rules hideRules={this.handleRulesClick}/>: <button onClick={this.handleRulesClick}>Show Rules</button> }
       </div>
     );
   }
