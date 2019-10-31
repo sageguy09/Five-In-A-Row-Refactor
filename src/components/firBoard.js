@@ -17,7 +17,7 @@ class FirBoard extends React.Component {
 
   }
   onClick = id => {
-      if (this.isActive(id) && this.isAvailable(this.props.G.board.boardArray[id])) {
+      if (this.isActive(id) && this.isAvailable(this.props.G.board.boardArray[id], id)) {
         this.props.moves.playOnSpace(id);
       }
     };
@@ -26,11 +26,11 @@ class FirBoard extends React.Component {
     if (this.props.G.cells[id] !== null) return false;
     return true;
   }
-  isAvailable = (id) => {
+  isAvailable = (spaceid, cellid) => {
   let playedCard = this.props.G.board.burn[this.props.G.board.burn.length-1] 
   if (this.props.ctx.activePlayers === null) return false
-
-  if (id < playedCard) return false
+  if (this.props.G.cells[cellid] !== null) return false
+  if (spaceid < playedCard) return false
   return true;
   }
   setPlayedSpaceColor = (id) => {
@@ -104,7 +104,7 @@ class FirBoard extends React.Component {
             key={id}
             className={`
             
-            ${this.isAvailable(this.props.G.board.boardArray[id]) ? 'available': `plyrClr${this.props.G.cells[id]}`} 
+            ${this.isAvailable(this.props.G.board.boardArray[id], id) ? 'available': `plyrClr${this.props.G.cells[id]}`} 
             ${this.isActive(id) ? 'active' : 'disabled'}
              `} 
             onClick={() => this.onClick(id)}
