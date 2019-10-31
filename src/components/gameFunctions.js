@@ -74,10 +74,11 @@ const drawCard = (currentState, ctx) => {
     let deckIndex = currentBoard.deck.length - 1; 
     let hand = ImmutableArray.append(currentPlayer.hand, currentBoard.deck[deckIndex]);
     let deck = ImmutableArray.removeAt(currentBoard.deck, deckIndex);
+    let move = 'drew a card'
     let player = {...currentPlayer, hand: hand}
     let playersu = {...currentPlayers, [playerId]: player }
     //console.log(players)
-    let board = {...currentBoard, deck};
+    let board = {...currentBoard, deck: deck, lastMove: move};
     let state = {...currentState,  players: playersu, [boardId]: board}
     ctx.events.endTurn();
     return(state)
