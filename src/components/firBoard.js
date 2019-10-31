@@ -72,7 +72,8 @@ class FirBoard extends React.Component {
     let playercards = this.props.G.players[player].hand.map(this.opponentCards);
     if (this.props.playerID != player){
     return <div>
-      <p>Player {player}'s Remaining Cards</p>
+      <span class={`plyrClr${player}`} >Player {player}'s Hand</span>
+      <br/>
       {playercards}
       {/* <img class="oppponentCard" src={cardback}/> */}
       </div>

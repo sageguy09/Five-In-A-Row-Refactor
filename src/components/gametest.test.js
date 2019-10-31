@@ -4,25 +4,26 @@ import { isMainThread } from 'worker_threads';
 import { tsExternalModuleReference, exportAllDeclaration } from '@babel/types';
 
 const mockCtx = {
-    numPlayers: 2,
+    numPlayers: 3,
     turn: 0,
     currentPlayer: "0",
     currentBoard: "1",
-    playOrder: ["0", "1"]
+    playOrder: ["0", "1", "3"]
 };
 
 
 
 let mockState = {
     board: {
-        deck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        deck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
         burn: [],
         playedSpaces: [],   
         lastMove: ''
     },
     players: {
         0 : {hand: []},
-        1 : {hand: []}
+        1 : {hand: []},
+        2:  {hand: []}
       },
         cells: Array(100).fill(null),        
     }
@@ -47,6 +48,7 @@ let mockState = {
 
 test('dealing initial cards', () => {
     let state_4 = initialState(mockCtx, mockState)
+    //console.log(state_4)
     expect(state_4.players[0].hand.length).toEqual(0)
     let state_5 = dealCards(mockState, mockCtx)    
     expect(state_5.players[0].hand.length).toEqual(4)

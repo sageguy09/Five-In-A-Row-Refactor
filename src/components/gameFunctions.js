@@ -10,11 +10,28 @@ function initialState(ctx, state) {
         deckArray.push(c)
     }
     let deck = ctx.random.Shuffle(deckArray)
-    return state || {
-        players: {
+    let players;
+    if (ctx.numPlayers === 2){
+        players =
+        {
             0 : {hand: []},
             1 : {hand: []}
-          },
+        }
+    }
+    if (ctx.numPlayers === 3){
+        players = 
+        {
+            0 : {hand: []},
+            1 : {hand: []},
+            2 : {hand: []}
+        }
+    }
+    return state || {
+        // players: {
+        //     0 : {hand: []},
+        //     1 : {hand: []}
+        //   },
+        players,
         board: {
             //deck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
             burn: [],

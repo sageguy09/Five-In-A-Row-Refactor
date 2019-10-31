@@ -27,14 +27,16 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css';
 import {Link} from 'react-router-dom'
 import TwoPlayerLocal from './components/twoPlayerLocal'
+import ThreePlayerLocal from './components/threePlayerLocal'
 import ServerMultiplayer from './components/serverMultiplayer'
 import Lobby from './components/lobby'
+import LobbyView from './components/lobby';
 class App extends Component {
 
   render() {
     return ( 
       <div>
-        <TwoPlayerLocal />
+        <Lobby />
       </div>
     )
   }

@@ -8,6 +8,22 @@ function initialState(ctx, state) {
     //     deckArray.push(c)
     // }
     // let deck = ctx.random.Shuffle(deckArray)
+    let players;
+    if (ctx.numPlayers === 2){
+        players =
+        {
+            0 : {hand: []},
+            1 : {hand: []}
+        }
+    }
+    if (ctx.numPlayers === 3){
+        players = 
+        {
+            0 : {hand: []},
+            1 : {hand: []},
+            2 : {hand: []}
+        }
+    }
     return state || {
         board: {
             deck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -28,10 +44,7 @@ function initialState(ctx, state) {
               ],
               lastMove: '',
         },
-        players: {
-            0 : {hand: []},
-            1 : {hand: []}
-          },
+        players,
         cells: Array(100).fill(null),
     }
 }

@@ -99,7 +99,7 @@ td.available:hover {
   background: #eeffff;
 }
 td.disabled {
-  background: rgba(255, 24, 24, 0.64)
+  background: #eeffe9ea;
 }
 td.plyrClr0 {
   background: rgba(61, 61, 245)
@@ -107,12 +107,19 @@ td.plyrClr0 {
 td.plyrClr1 {
   background: rgba(119, 136, 153)
 }
+td.plyrClr2 {
+  background: rgba(190, 36, 36)
+}
 span.plyrClr0 {
   background-color: rgba(61, 61, 245)
 }
 span.plyrClr1 {
   background-color: rgba(119, 136, 153)
 }
+span.plyrClr2 {
+  background-color: rgba(190, 36, 36)
+}
+
 
 .runner {
   display: flex;

@@ -4,7 +4,8 @@ import { default as FirBoard } from './firBoard';
 import { default as FirGame } from './firGame';
 import '../App.css'
 
-FirGame.minPlayers = FirGame.maxPlayers = 2;
+FirGame.minPlayers =2 
+FirGame.maxPlayers = 3;
 FirGame.debug = true;
 
 const hostname = window.location.hostname;
