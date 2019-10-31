@@ -68,10 +68,12 @@ class FirBoard extends React.Component {
     // Object.keys(players).forEach(player => {
     //   console.log(player)
     // })
+    let playercards = this.props.G.players[player].hand.map(this.opponentCards);
     if (this.props.playerID != player){
     return <div>
       <p>{player} : {this.props.G.players[player].hand.length}</p>
-      <img class="oppponentCard" src={cardback}/>
+      {playercards}
+      {/* <img class="oppponentCard" src={cardback}/> */}
       </div>
     }
   }
