@@ -1,6 +1,7 @@
 import React from 'react';
 import Rules from './rules';
 // import {Link} from 'react-router-dom'
+import cardback from './cardback.png'
 
 class FirBoard extends React.Component {
   state = {
@@ -55,7 +56,32 @@ class FirBoard extends React.Component {
     // <button onClick={() => this.playCardById(cards)}>{cards}</button> 
     <div class="handCard" onClick={() => this.playCardById(cards)}><p class="cardVal">{cards}</p></div>
     )
-  
+  getOpponentCardCount = (players) => {
+    let playerids = Object.keys(players)
+    playerids.forEach((player) => {
+      console.log(player, players[player].hand)
+      return players[player].hand.map(this.opponentCards)
+    })
+  }
+  opponentsHands = (player) => {
+    // <div class="opponents">{player.hand.map(this.opponentCards)}</div>
+    // Object.keys(players).forEach(player => {
+    //   console.log(player)
+    // })
+    if (this.props.playerID != player){
+    return <div>
+      <p>{player} : {this.props.G.players[player].hand.length}</p>
+      <img class="oppponentCard" src={cardback}/>
+      </div>
+    }
+  }
+  opponentCards = (cards) => (
+  // <img class="oppponentCard" src="../public/card_back_orange.png"/>
+  <p>card: {cards}</p>
+   
+      //console.log(cards)
+    
+  )
 
   render() {
     
@@ -117,6 +143,9 @@ class FirBoard extends React.Component {
       <div>
         <h1 align="center">Five in a Row</h1>
         <h3>Current Player: <span class={`plyrClr${this.props.ctx.currentPlayer}`} >{this.props.ctx.currentPlayer}</span></h3>
+        {/* {this.props.G.players != undefined ? this.getOpponentCardCount(this.props.G.players): null} */}
+        {this.props.G.players != undefined ? Object.keys(this.props.G.players).map(this.opponentsHands) : null}
+        {/* {this.props.G.players != undefined ? this.props.players.forEach(this.opponentsHands): null} */}
         <table id="board" align="center">
           <tbody>{tbody}</tbody>
         </table>
