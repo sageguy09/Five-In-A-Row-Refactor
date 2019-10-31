@@ -47,7 +47,7 @@ const dealCards = (currentState, ctx) => {
             let currentBoard = currentState[boardId]
             let deck = currentBoard.deck
             let hand = selectedPlayer.hand
-            currentBoard.lastMove = 'Cards have been dealt. Waiting on player to make move'
+            currentBoard.lastMove = 'Cards have been dealt. Waiting on Player '+ ctx.currentPlayer+ ' to make a move'
             hand.push(deck.pop());
             let player = {...selectedPlayer,  hand: hand};
             let playersu = {...currentPlayers,  [playerId]: player}
@@ -67,7 +67,7 @@ const drawCard = (currentState, ctx) => {
     let deckIndex = currentBoard.deck.length - 1; 
     let hand = ImmutableArray.append(currentPlayer.hand, currentBoard.deck[deckIndex]);
     let deck = ImmutableArray.removeAt(currentBoard.deck, deckIndex);
-    let move = 'drew a card'
+    let move = ('Player '+playerId+' drew a card')
     let player = {...currentPlayer, hand: hand}
     let playersu = {...currentPlayers, [playerId]: player }
     //console.log(players)
@@ -88,7 +88,7 @@ const playCard = (currentState, ctx, cardId) => {
     //remove card from player hand. 
     let hand = ImmutableArray.removeAt(currentPlayer.hand, handIndex)
 
-    let move = 'playing a card'
+    let move = ('Player '+ playerId+ ' is playing a card')
     //construct and return a new state object with changes.
     let player = {...currentPlayer, hand: hand}
     let playersu = {...currentPlayers, [playerId]: player }
@@ -104,7 +104,7 @@ const playOnSpace = (currentState, ctx, id) => {
     //     return INVALID_MOVE;
     // }
     //fill cell with 0 or 1 depending the current player.
-    currentState.board.lastMove = 'played on space'
+    currentState.board.lastMove = ('Player '+ctx.currentPlayer+' played on space '+id)
     currentState.cells[id] = ctx.currentPlayer;
     currentState.board.playedSpaces = ImmutableArray.append(currentState.board.playedSpaces, id)
     return currentState

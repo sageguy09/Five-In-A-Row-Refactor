@@ -50,7 +50,7 @@ const dealCards = (currentState, ctx) => {
             let currentBoard = currentState[boardId]
             let deck = currentBoard.deck
             let hand = selectedPlayer.hand
-            currentBoard.lastMove = 'Cards have been dealt. Waiting on player to make move'
+            currentBoard.lastMove = 'Cards have been dealt. Waiting on Player '+ ctx.currentPlayer+ ' to make a move'
             hand.push(deck.pop());
             let player = {...selectedPlayer,  hand: hand};
             let playersu = {...currentPlayers,  [playerId]: player}
@@ -74,7 +74,7 @@ const drawCard = (currentState, ctx) => {
     let deckIndex = currentBoard.deck.length - 1; 
     let hand = ImmutableArray.append(currentPlayer.hand, currentBoard.deck[deckIndex]);
     let deck = ImmutableArray.removeAt(currentBoard.deck, deckIndex);
-    let move = 'drew a card'
+    let move = ('Player '+playerId+' drew a card')
     let player = {...currentPlayer, hand: hand}
     let playersu = {...currentPlayers, [playerId]: player }
     //console.log(players)
@@ -99,10 +99,11 @@ const playCard = (currentState, ctx, cardId) => {
     let burn = ImmutableArray.append(currentBoard.burn, currentPlayer.hand[handIndex])
     //remove card from player hand. 
     let hand = ImmutableArray.removeAt(currentPlayer.hand, handIndex)
+    let move = ('Player '+ playerId+ ' is playing a card')
     //construct and return a new state object with changes.
     let player = {...currentPlayer, hand: hand}
     let playersu = {...currentPlayers, [playerId]: player }
-    let board = {...currentBoard, burn};
+    let board = {...currentBoard, burn: burn, lastMove: move};
     let state = {...currentState,  players: playersu, [boardId]: board}
     //set game to play stage for player to play on a space
     ctx.events.setActivePlayers({player: 'play', moveLimit: 1})
@@ -114,6 +115,7 @@ const playOnSpace = (currentState, ctx, id) => {
         return INVALID_MOVE;
     }
     //fill cell with 0 or 1 depending the current player.
+    currentState.board.lastMove = ('Player '+ctx.currentPlayer+' played card '+currentState.board.burn[currentState.board.burn.length-1]+' on space '+currentState.board.boardArray[id])
     currentState.cells[id] = ctx.currentPlayer;
     currentState.board.playedSpaces = ImmutableArray.append(currentState.board.playedSpaces, currentState.board.boardArray[id])
     ctx.events.endTurn();

@@ -86,13 +86,11 @@ class FirBoard extends React.Component {
     
   )
 
-  lastMove = () => {
-
-    let loggedMove = this.props.log[this.props.log.length-1].action
-    if(loggedMove.type == "MAKE_MOVE"){
-    console.log(loggedMove.payload.type)}
-    // <p>{this.props.log[this.props.log.length-1]}</p>
-  }  
+  // lastMove = () => {
+  //   move = this.props.G.board.lastMove
+  //   if (move == "")
+  //   // <p>{this.props.log[this.props.log.length-1]}</p>
+  // }  
 
   render() {
     
@@ -151,7 +149,7 @@ class FirBoard extends React.Component {
     let prevMove = null;
     if (this.props.G.board.lastMove != null){
       prevMove = 
-      <p>{this.props.G.board.lastMove}</p>
+      <div><h5>Move Log: </h5><p>{this.props.G.board.lastMove}</p></div>
     }
         
     
@@ -167,7 +165,8 @@ class FirBoard extends React.Component {
         </table>
         <div align="center">
           <h5>Current Player: <span class={`plyrClr${this.props.ctx.currentPlayer}`} >{this.props.ctx.currentPlayer}</span></h5>
-          <h5>Last Played Card: {this.props.G.board.burn[this.props.G.board.burn.length-1]} on space {this.props.G.board.playedSpaces[this.props.G.board.playedSpaces.length-1]}</h5>
+          {/* <h5>Last Played Card: {this.props.G.board.burn[this.props.G.board.burn.length-1]} on space {this.props.G.board.playedSpaces[this.props.G.board.playedSpaces.length-1]}</h5> */}
+          {prevMove}
         </div>
         {winner}
         {/* <Link to="/">Home</Link> */}
@@ -178,7 +177,7 @@ class FirBoard extends React.Component {
         {this.props.G.players != undefined ? Object.keys(this.props.G.players).map(this.opponentsHands) : null}
         {this.state.showrules ? <Rules hideRules={this.handleRulesClick}/>: <button onClick={this.handleRulesClick}>Show Rules</button> }
         {/* {this.props.board.lastMove != undefined ? Object.keys(this.props.log).map(this.lastMove): null} */}
-        {prevMove}
+        
         </div>
         
       </div>
