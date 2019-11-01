@@ -1,7 +1,8 @@
 import React from 'react';
-import { Lobby } from 'boardgame.io/react';
+//import { Lobby } from 'boardgame.io/react';
 import { default as FirBoard } from './firBoard';
 import { default as FirGame } from './firGame';
+import { default as Lobby } from './lobby/react'
 import '../App.css'
 
 FirGame.minPlayers =2 
