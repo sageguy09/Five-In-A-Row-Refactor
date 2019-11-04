@@ -65,34 +65,18 @@ class FirBoard extends React.Component {
     })
   }
   opponentsHands = (player) => {
-    // <div class="opponents">{player.hand.map(this.opponentCards)}</div>
-    // Object.keys(players).forEach(player => {
-    //   console.log(player)
-    // })
     let playercards = this.props.G.players[player].hand.map(this.opponentCards);
     if (this.props.playerID != player){
     return <div>
       <span class={`plyrClr${player}`} >Player {player}'s Hand</span>
       <br/>
       {playercards}
-      {/* <img class="oppponentCard" src={cardback}/> */}
       </div>
     }
   }
   opponentCards = (cards) => (
-  // <img class="oppponentCard" src="../public/card_back_orange.png"/>
-  <img class="opponentCard" src={cardback}/>
-   
-      //console.log(cards)
-    
+    <img class="opponentCard" src={cardback}/> 
   )
-
-  // lastMove = () => {
-  //   move = this.props.G.board.lastMove
-  //   if (move == "")
-  //   // <p>{this.props.log[this.props.log.length-1]}</p>
-  // }  
-
   render() {
     
     let tbody = [];
@@ -104,7 +88,6 @@ class FirBoard extends React.Component {
           <td
             key={id}
             className={`
-            
             ${this.isAvailable(this.props.G.board.boardArray[id], id) ? 'available': `plyrClr${this.props.G.cells[id]}`} 
             ${this.isActive(id) ? 'active' : 'disabled'}
              `} 
@@ -132,7 +115,9 @@ class FirBoard extends React.Component {
     if (!this.props.isActive) {
       awaitPlayer = 
       <div class="playerControls">
-        <div id="winner"><h5 align="center">Awaiting other player to make move...</h5></div>
+        <div id="winner">
+          <h5 align="center">Awaiting other player to make move...</h5>
+        </div>
         <div class="playerHand" disabled>
           {this.props.G.players[this.props.playerID].hand != undefined ? this.props.G.players[this.props.playerID].hand.map(this.currentPlayerCards) : null }
         </div>
@@ -140,50 +125,36 @@ class FirBoard extends React.Component {
       }
     else {
       awaitPlayer = 
-    <div class="playerControls">
-      <button onClick={this.drawCard}>Draw Card</button>
-      {/* broken due to phases/move assignment <button onClick={() => this.props.undo()}>Undo Play</button> */}
-      <div class="playerHand">
-        {this.props.G.players[this.props.playerID].hand != undefined ? this.props.G.players[this.props.playerID].hand.map(this.currentPlayerCards) : null }
-      </div>
+      <div class="playerControls">
+        <button onClick={this.drawCard}>Draw Card</button>
+        {/* broken due to phases/move assignment <button onClick={() => this.props.undo()}>Undo Play</button> */}
+        <div class="playerHand">
+          {this.props.G.players[this.props.playerID].hand != undefined ? this.props.G.players[this.props.playerID].hand.map(this.currentPlayerCards) : null }
+        </div>
       </div>}
     let prevMove = null;
     if (this.props.G.board.lastMove != null){
       prevMove = 
       <div>
         <h5>Current Player: <span class={`plyrClr${this.props.ctx.currentPlayer}`} >{this.props.ctx.currentPlayer}</span></h5>
-        <h5>Move Log: </h5><p>{this.props.G.board.lastMove}</p>
+        <h5>Move Log: </h5><span>{this.props.G.board.lastMove}</span>
       </div>
     }
         
     
     return (
-      <div>
-        <h1 align="center">Five in a Row</h1>
-        
-        {/* {this.props.G.players != undefined ? this.getOpponentCardCount(this.props.G.players): null} */}
-        
-        {/* {this.props.G.players != undefined ? this.props.players.forEach(this.opponentsHands): null} */}
-        <table id="board" align="center">
+      <div class="fircontainer">
+        <h1 class="gameTitle">Five in a Row</h1>
+        <table id="board" >
           <tbody>{tbody}</tbody>
         </table>
         <div align="center">
-          
-          {/* <h5>Last Played Card: {this.props.G.board.burn[this.props.G.board.burn.length-1]} on space {this.props.G.board.playedSpaces[this.props.G.board.playedSpaces.length-1]}</h5> */}
           {prevMove}
-        </div>
-        {winner}
-        {/* <Link to="/">Home</Link> */}
-        <br/>
-        <div align="center">
-        
-        {awaitPlayer}
-        {this.props.G.players != undefined ? Object.keys(this.props.G.players).map(this.opponentsHands) : null}
-        {this.state.showrules ? <Rules hideRules={this.handleRulesClick}/>: <button onClick={this.handleRulesClick}>Show Rules</button> }
-        {/* {this.props.board.lastMove != undefined ? Object.keys(this.props.log).map(this.lastMove): null} */}
-        
-        </div>
-        
+          {winner}
+          {awaitPlayer}
+          {this.props.G.players != undefined ? Object.keys(this.props.G.players).map(this.opponentsHands) : null}
+          {this.state.showrules ? <Rules hideRules={this.handleRulesClick}/>: <button onClick={this.handleRulesClick}>Show Rules</button> }
+        </div>        
       </div>
     );
   }

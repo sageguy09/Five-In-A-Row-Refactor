@@ -17,7 +17,7 @@ const importedGames = [
 ];
 
 const LobbyView = () => (
-    <div style={{ padding: 50 }}>
+    <div>
         <Lobby
             gameServer={(process.env.NODE_ENV === 'production') ? `${url}` : `${window.location.hostname}:${GAMEPORT}`}
             lobbyServer={(process.env.NODE_ENV === 'production') ? `${url}` : `${window.location.hostname}:${GAMEPORT}`}

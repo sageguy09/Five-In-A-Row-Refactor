@@ -1,41 +1,18 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.fircontainer{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  
 }
 
-.App-link {
-  color: #61dafb;
+.gameTitle{
+  align-self: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 #board {
   border-collapse: collapse;
   font-family: monospace;
-  align-content: center
+  height: 90%;
+  align-self: center;
 }
 
 #winner {
@@ -49,13 +26,14 @@
   align-content: center;
 }
 .playerHand{
+  align-self: center;
   display: flex;
   justify-content: center;
 }
 .handCard{
-  height:200px;
-  width: 160px;
-  background: white;
+  height:180px;
+  width: 140px;
+  background: rgb(253, 244, 244);
   font-size: 25px;
   margin: 3px;
   border: solid black 2px;
@@ -195,6 +173,7 @@ span.plyrClr2 {
   margin-left: 10px;
   margin-top: 10px;
   width: 70px;
+  align-self: center;
 }
 
 /* 
