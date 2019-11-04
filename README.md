@@ -1,68 +1,72 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## SEI Project 3
+---
 
-## Available Scripts
+### Deployed Application
+[Link to Application on Heroku](https://hidden-temple-14129.herokuapp.com/)
 
-In the project directory, you can run:
+### Project Planning Board
 
-### `npm start`
+[Link to GitKraken Project](https://app.gitkraken.com/glo/board/XX-h3biuYQAP_SwN)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Problem Statement and Target Audience
 
-### `npm test`
+This web app is to provide an online verision of the original board game. 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Through this app, my family will be able to play together over the web while also introducing the internet to our favorite family board game.
 
-### `npm run build`
+### A history on Five in a Row
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+'Five in a Row' is a boardd game written by my grandmother, Paula Claudill, back in the late 60s. She initially hand crafted 100 boards and sold all of them at craft festivals throughout Indiana. She sold all versions of the game, but 1, which is what us grandkids grew up playing. The availability of the board game is what inspired this web app. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Not being able to have access to '5 in a row' outside of my Grandparent's home,I wanted to provide a solution for all family members to be able to not only play the game, but to be able to play together from anwhere an internet connection is present.  Through this webapp, our family can play our favorite family board game, from any where in the country. 
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Game Board and Materials](https://i.imgur.com/LhDe900.jpg)
+---
+### Game Objective
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Play cards from hand to place 'pegs' on the board. The goal is to have 5 of your colored pegs in a row 
+diagonally, horiztonally, or vertically. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
+### Game Rules
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### Players Per Game
+Game can be played with eith 2 or 3 players 
+NOTE: This game traditionally can also be played with teams of 2 or 3, making if possible to have up to 9 players. For the MVP, **this version will support 2-3 players.**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Player Turn and Hand
 
-### Code Splitting
+Players are able to only have up to 4 cards in their hand at a time. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+On player's turn, player may either play a card/place peg or draw a card. 
 
-### Analyzing the Bundle Size
+#### Playing a card/placing peg
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+When a card is played, a player is able to place the peg on the number listed on the card or any number that is greater than what is displayed on the card **as long as the space has not been played already** (aka when another peg is already in the space). 
 
-### Making a Progressive Web App
+![Imgur](https://i.imgur.com/BCVcnBs.jpg)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+**a space can not be played on a number lower than the value that is listed on the card**
+Example: if someone plays card '90' on space '99', the player holding card 99 can no longer play that card. 
+This equates to that player needing to keep now dead card '99' in their hand for the rest of the game, leaving them with onliy 3 playable cards. 
 
-### Advanced Configuration
+**Lower cards are much more valuable and should be saved for blocking attempts made on lower ranges of numbers**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+**'0' is considered the most valuable card in the game, since it can be played on any space on the board**
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+### ERD and Wireframing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![Initial ERD Diagram](https://i.imgur.com/B3bNxY7.jpg)
+![Create Game Wireframe](https://i.imgur.com/Hy7FGEz.jpg?1)
+![Main Page Wireframe](https://i.imgur.com/rZHdHCY.jpg)
+
+
+### credits
+react game-board engine and initial gameboard and click cells logic from Nicolo Davis' over at (boardgame.io)[https://boardgame.io]
