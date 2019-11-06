@@ -1,4 +1,4 @@
-## SEI Project 3
+## SEI Project 3 - Five in a Row
 ---
 
 ### Deployed Application
